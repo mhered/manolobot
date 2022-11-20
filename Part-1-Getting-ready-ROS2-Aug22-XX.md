@@ -187,33 +187,3 @@ Link to blog post: [Getting Ready for ROS Part 5: Making your First Package](htt
 5. Pull from git to the robot
 6. Test it 
 
-## First prototype (20/11/22)
-
-### Notes
-
-- 12V from bench power source
-- A split takes the 12V to the buck converter and the motor driver.
-- Buck converter takes 12V at IN+ /IN- and yields 5V at OUT+/OUT- to power the RPi
-- RPi takes 5V at pin 4 (5V)/ pin 6(GND) - [How do I power my Raspberry Pi](https://robocraze.com/blogs/post/how-do-i-power-my-raspberry-pi)
-- Arduino Nano powered from RPi via USB
-- Motor Driver is powered by 12V at 12V/GND pins. 5V jumper is installed, 5V terminal not connected - Could I use this to power the RPi?
-- OUT1/OUT2 are connected to the Red/White of the motor. The remaining 4 cables of the encoder are disconnected.
-- Connecting the IN1 / IN2 to 5V (e.g. to the 5V pin of the Arduino Nano, cfr. [the Nano pinout in this tutorial](https://diyi0t.com/arduino-nano-tutorial/)) makes the Motor rotate CV / CCV  
-
-### Diagram and overview
-
-
-
-<img src="./assets/images/prototype_diagram.png" alt="prototype_diagram" style="zoom: 67%;" />
-
-![first_prototype](./assets/images/first_prototype.jpeg)
-
-### Shutting down
-
-First, SSH into the RPi to shut it down:
-
-```bash
-(RPi) $ sudo shutdown -h now
-```
-
-Then switch off the power supply
