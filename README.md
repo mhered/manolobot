@@ -1,3 +1,13 @@
+# manolobot
+
+This repo contains my notes documenting the build of my own ROS2-based mobile robot with camera and LIDAR.
+
+This project is inspired in the phenomenal series of blog and video tutorials [Articulated Robotics](https://articulatedrobotics.xyz/) by Josh Newans.
+
+* [Part 1](./ROS2-Getting-ready-Aug22-L01-XX.md): Getting ready for ROS (Articulated Robotics Videos #01 - #08 and Extra)
+
+* [Part 2](): Making a Mobile Robot project
+
 # Bill of Materials
 
 
