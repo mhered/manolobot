@@ -16,6 +16,7 @@
 | 1    | [35W Buck-Boost DC Converter](./buck_converter.md)    | ![buck_converter](assets/images/buck_converter.jpg)          | ARCELI Buck-Boost Converter with display, DC 5.5-30V 12v to DC 0.5-30V  35W | [Amazon](https://www.amazon.es/gp/product/B07MY399GQ/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1) | 12,99€        |
 | 1    | [5" 800x480 Resistive  Touchscreen](./touchscreen.md) | ![touchscreen](assets/images/5inch-HDMI-LCD-B-intro.jpg)     | Waveshare 5" HDMI LCD 800x480 Resistive Touchscreen TFT Display  with Case for Raspberry Pi 4 | [Amazon](https://www.amazon.es/dp/B07PLF8V8Y?psc=1&ref=ppx_pop_dt_b_product_details) | 52,99€        |
 | 1    | [DTOF Lidar LD06](./LD06-lidar.md)                    | ![LD06-lidar](/run/user/1000/doc/16a3ae7/LD06-lidar.webp)    |                                                              | [Amazon](https://www.amazon.es/innomaker-integrado-omnidireccional-resistencia-LiDAR_LD06/dp/B08GJJX41D/ref=cm_cr_arp_d_product_top?ie=UTF8) | 99,99€        |
+| 1    | [Pi Camera](pi_camera.md)                             | ![pi_camera](/run/user/1000/doc/8aa1cb49/pi_camera.webp)     | Pi Camera v1.3 with acrilic support                          |                                                              |               |
 
 ## First prototype (20/11/22)
 
