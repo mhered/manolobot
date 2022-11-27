@@ -44,10 +44,11 @@ crw-rw----+ 1 root video 81, 5 Apr 21  2022 /dev/video11
 
 And `cheese` was already installed
 
-The camera works but not properly (slow, low resolution, weird colors).
+I tested with `cheese`  (cfr. https://linuxconfig.org/how-to-test-webcam-on-ubuntu-20-04-focal-fossa) and the camera works but is very slow, has low resolution, and weird colors.
 
-This article: https://raspberrypi.stackexchange.com/questions/114035/picamera-and-ubuntu-20-04-arm64
+This article: https://raspberrypi.stackexchange.com/questions/114035/picamera-and-ubuntu-20-04-arm64 recommends using `opencv` but mentions there is active development to support `libcamera`? in ubuntu arm 64b.
 
-recommends using opencv and mentions there is active development to support `libcamera`? in ubuntu arm 64b
+However this guy claims `raspiconfig` can be installed in Ubuntu Mate: https://ubuntu-mate.community/t/install-raspi-config-on-ubuntu-mate-20-10-and-higher/23974
 
 To be continued... 
+
