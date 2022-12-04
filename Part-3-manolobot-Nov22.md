@@ -50,3 +50,23 @@ Before switching off the power supply, SSH into the RPi to shut it down:
 ### Powering the adafruit USB hub
 
 https://forums.adafruit.com/viewtopic.php?p=930206&hilit=external+power+usb+hub#p930206
+
+## Prototype status on 4/12
+
+- installed fuse and switch
+- replaced split with AWG22 cable
+- installed second motor
+- connected Pi camera, LD06 lidar and LCD screen
+- made USB C pigtail to connect RPi (powering from pins cannot run accesories)
+- ordered spacers, a UÇSB pigtail, a flat HDMI cable and a USB hub
+
+## To do
+
+- [ ] configure and test camera
+- [ ] configure and test lidar
+- [ ] connect motors 
+- [ ] install and test motor software
+- [ ] make layout of components in board
+- [ ] purchase and install battery
+- [ ] solve issues with screen 
+- [ ] configure face in screen
