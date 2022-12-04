@@ -35,9 +35,9 @@
 
 
 
-<img src="/home/mhered/manolobot/assets/images/prototype_diagram.png" alt="prototype_diagram" style="zoom: 67%;" />
+<img src="./assets/images/prototype_diagram.png" alt="prototype_diagram" style="zoom: 67%;" />
 
-![first_prototype](/home/mhered/manolobot/assets/images/first_prototype.jpeg)
+![first_prototype](./assets/images/first_prototype.jpeg)
 
 ### Shutting down
 
