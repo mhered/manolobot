@@ -25,25 +25,25 @@ Nylon wheel hub for hex coupling
 
 Tire tread pattern: imitation HPI drift pattern load capacity grip
 
-![wheel](/home/mhered/manolobot/assets/images/wheel.jpg)
+![wheel](./assets/images/wheel.jpg)
 
 ## Mounting bracket
 
-![Bracket](/home/mhered/manolobot/assets/images/bracket.jpg)
+![Bracket](./assets/images/bracket.jpg)
 
 ## Brass coupling
 
-![Coupling](/home/mhered/manolobot/assets/images/coupling.jpg)
+![Coupling](./assets/images/coupling.jpg)
 
 ## Motor
 
-![motor](/home/mhered/manolobot/assets/images/motor.jpg)
+![motor](./assets/images/motor.jpg)
 
-![motor2](/home/mhered/manolobot/assets/images/motor2.jpg)
+![motor2](./assets/images/motor2.jpg)
 
 [Link to Datasheet](https://www.openimpulse.com/blog/wp-content/uploads/wpsc/downloadables/JGA25-371-data-sheet1.jpg)
 
-![JGA25-371-data-sheet1](/home/mhered/manolobot/assets/images/JGA25-371-data-sheet1.jpg)
+![JGA25-371-data-sheet1](./assets/images/JGA25-371-data-sheet1.jpg)
 
 Datasheet not to be trusted. Measured Stall Current: ca. 1.5A
 
@@ -51,7 +51,7 @@ Datasheet not to be trusted. Measured Stall Current: ca. 1.5A
 
 https://forum.arduino.cc/t/connecting-a-dc-motor-w-encoder-to-arduino-shield/517262/8
 
-![connections](/home/mhered/manolobot/assets/images/wiring.jpg)
+![connections](./assets/images/wiring.jpg)
 
 Review!!
 
