@@ -61,6 +61,8 @@ https://forums.adafruit.com/viewtopic.php?p=930206&hilit=external+power+usb+hub#
 * installed flat HDMI cable, USB-C pigtail
 * discarded USB hub (not needed)
 
+![](./assets/images/diagram.png)
+
 ![](./assets/images/2022.12.28_status_manolobot.jpeg)
 
 ## To do
