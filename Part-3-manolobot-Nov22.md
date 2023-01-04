@@ -65,36 +65,37 @@ https://forums.adafruit.com/viewtopic.php?p=930206&hilit=external+power+usb+hub#
 
 ![](./assets/images/2022.12.28_status_manolobot.jpeg)
 
-# Controlling the motors with a joystick
+## Controlling the motors with a joystick (4/1/23)
 
 Code: [./code/arduino/motor_joystick/motor_joystick.ino](./code/arduino/motor_joystick/motor_joystick.ino) (Inspired on [this example code for the joystick](https://www.luisllamas.es/arduino-joystick/) and [this example code for the motors](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/))
 
 Notes:
 
-* Connect only motor voltage (WHITE, RED), keep encoder disconnected(BLUE,GREEN, BLACK,YELLOW)
-* Remove brakers from ENA and ENB in the motor driver L298N, 
-* Connect 
+* For motors A and B connect only motor voltage (WHITE, RED) to the motor driver L298N, keeping encoder disconnected (BLUE,GREEN, BLACK,YELLOW)
+* In the motor driver L298N, remove the brakers in ENA and ENB 
+* Connect as per following table and diagram:
+
+| Description | Component pin | Arduino pin |
+| ------- | ---- | ---- |
+| Motor A speed (analog) | ENA  | D9   |
+| Motor A direction | IN1 | D8 |
+| Motor A direction | IN2 | D7 |
+| Motor B speed (analog) | ENB | D3 |
+| Motor B direction | IN3 | D5 |
+| Motor B direction | IN4 | D4 |
+| Joystick: command rotation (analog) | VRX | A0 |
+| Joystick: command forward / backward motion (analog) | VRY | A1 |
+
+![](./assets/images/diagram_joystick.png)
+
 * Analog output of VRX, VRY is in the range 0 - 1023. 
 * Analog input of ENA and ENB in the range 0-255. 
 * To change direction of rotation of Motor A reverse input to IN1 - IN2  from HIGH - LOW to LOW - HIGH
 * Idem for Motor B, IN3, IN4
 
-| Component | Component pin | Arduino pin |
-| ------- | ---- | ---- |
-| Motor A | ENA  | D9   |
-| Motor A | IN1 | D8 |
-| Motor A | IN2 | D7 |
-| Motor B | ENB | D3 |
-| Motor B | IN3 | D5 |
-| Motor B | IN4 | D4 |
-| Joystick | VRX | A0 |
-| Joystick | VRY | A1 |
+The script allows to control the motors with the joystick. Moving the stick in the Y direction turns both wheels forward / backward. Moving the stick in X direction moves the wheels in opposite directions to make the robot turn. The script also prints output through serial. 
 
-![](./assets/images/diagram_joystick.png)
-
-# `miniterm` to monitor serial in the Arduino from the laptop and through the RPi
-
-Check out this video: https://www.youtube.com/watch?v=2BJ-iJF04VA
+## `miniterm` to monitor serial in the Arduino from the laptop (and through the RPi)
 
 1. install `miniterm` in PC and RPi
 
@@ -138,16 +139,41 @@ X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
 ...
 ```
 
-Note: to stop `miniterm` press  `CTRL + Alt Gr + ]` in the Spanish keyboard
+Note: to stop `miniterm` with a Spanish keyboard press  `Ctrl + Alt Gr + ]` 
 
+## VS Code Remote and Arduino extensions
 
+Check out this video on how to write and upload to arduino from the laptop and through the RPi: https://www.youtube.com/watch?v=2BJ-iJF04VA
+
+Highlights of the installation:
+
+* Copy & Paste **only** the path of the folder where the `arduino` executable is, e.g. in the case below paste only `/home/mhered/Applications/arduino-1.8.19/`:
+
+`````bash
+$ ls -l `which arduino`
+lrwxrwxrwx 1 root root 48 Sep  9 02:02 /usr/local/bin/arduino -> /home/mhered/Applications/arduino-1.8.19/arduino
+
+`````
+
+* No need to select a programmer, see [here](https://support.arduino.cc/hc/en-us/articles/6125080065820-Select-programmer-in-Arduino-IDE)
+* Edit `.vscode/arduino.json` to add `"output":"build"` to avoid the message that it cannot use precompiled files
+
+Highlights of the usage:
+
+* To launch **Remote SSH** click in the green square in the bottom left corner of VS Code, select **Connect to Host** and select the host, then enter the password
+* To compile: Open Command panel with  `Ctrl + Shift + P` then start typing Verify for **Arduino: Verify** to compile. Wait for it to finish.
+* To flash: **Arduino: Upload**. Wait for compile to complete before uploading. Does not work if `miniterm` is running.
 
 ## To do
 
+- [x] connect motors 
+- [x] install and test basic motor software
+
+- [ ] connect and test encoders
+- [ ] command motor through ROS 
 - [ ] configure and test camera
 - [ ] configure and test lidar
-- [ ] connect motors 
-- [ ] install and test motor software
+
 - [ ] make layout of components in board
 - [ ] purchase and install battery
 - [ ] solve issues with screen 
