@@ -63,18 +63,26 @@ void loop() {
    if (motorB>255) motorB=255;
    
    //show values through serial
-   Serial.print("X:" );
+   Serial.print("X, Y: ");
    Serial.print(Xvalue);
-   Serial.print(" | Y: ");
+   Serial.print(", ");
    Serial.print(Yvalue);
-   Serial.print(" | motorA: ");
+   Serial.print(" | Motor A: ");
    Serial.print(motorA);
-   Serial.print(" | fwdA: ");   
-   Serial.print(fwdA);
-   Serial.print(" | motorB: ");
+   if (fwdA == true) {
+    Serial.print(" FWD");
+   } 
+   else {
+    Serial.print(" REV");
+   }
+   Serial.print(" | Motor B: ");
    Serial.print(motorB);
-   Serial.print(" | fwdB: ");   
-   Serial.println(fwdB);
+  if (fwdB == true) {
+    Serial.println(" FWD");
+   } 
+   else {
+    Serial.println(" REV");
+   }
    
    // operate motors
 
