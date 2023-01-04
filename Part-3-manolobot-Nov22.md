@@ -65,6 +65,83 @@ https://forums.adafruit.com/viewtopic.php?p=930206&hilit=external+power+usb+hub#
 
 ![](./assets/images/2022.12.28_status_manolobot.jpeg)
 
+# Controlling the motors with a joystick
+
+Code: [./code/arduino/motor_joystick/motor_joystick.ino](./code/arduino/motor_joystick/motor_joystick.ino) (Inspired on [this example code for the joystick](https://www.luisllamas.es/arduino-joystick/) and [this example code for the motors](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/))
+
+Notes:
+
+* Connect only motor voltage (WHITE, RED), keep encoder disconnected(BLUE,GREEN, BLACK,YELLOW)
+* Remove brakers from ENA and ENB in the motor driver L298N, 
+* Connect 
+* Analog output of VRX, VRY is in the range 0 - 1023. 
+* Analog input of ENA and ENB in the range 0-255. 
+* To change direction of rotation of Motor A reverse input to IN1 - IN2  from HIGH - LOW to LOW - HIGH
+* Idem for Motor B, IN3, IN4
+
+| Component | Component pin | Arduino pin |
+| ------- | ---- | ---- |
+| Motor A | ENA  | D9   |
+| Motor A | IN1 | D8 |
+| Motor A | IN2 | D7 |
+| Motor B | ENB | D3 |
+| Motor B | IN3 | D5 |
+| Motor B | IN4 | D4 |
+| Joystick | VRX | A0 |
+| Joystick | VRY | A1 |
+
+![](./assets/images/diagram_joystick.png)
+
+# `miniterm` to monitor serial in the Arduino from the laptop and through the RPi
+
+Check out this video: https://www.youtube.com/watch?v=2BJ-iJF04VA
+
+1. install `miniterm` in PC and RPi
+
+```bash
+$ sudo apt install python3-serial
+```
+
+2. add the user to the dialout group:
+
+```bash
+$ sudo adduser mhered dialout
+```
+
+3. usage:
+
+```bash
+$ miniterm
+
+--- Available ports:
+---  1: /dev/ttyAMA0         'ttyAMA0'
+---  2: /dev/ttyUSB0         'USB2.0-Ser!'
+--- Enter port index or full name: 2
+--- Miniterm on /dev/ttyUSB0  9600,8,N,1 ---
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
+X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
+X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
+X:510 | Y: 1023 | motorA: 255 | fwdA: 1 | motorB: 255 | fwdB: 1
+X:510 | Y: 1023 | motorA: 255 | fwdA: 1 | motorB: 255 | fwdB: 1
+X:510 | Y: 1023 | motorA: 255 | fwdA: 1 | motorB: 255 | fwdB: 1
+X:510 | Y: 1023 | motorA: 255 | fwdA: 1 | motorB: 255 | fwdB: 1
+X:510 | Y: 1023 | motorA: 255 | fwdA: 1 | motorB: 255 | fwdB: 1
+X:510 | Y: 568 | motorA: 28 | fwdA: 1 | motorB: 28 | fwdB: 1
+X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
+X:510 | Y: 0 | motorA: 255 | fwdA: 0 | motorB: 255 | fwdB: 0
+X:523 | Y: 0 | motorA: 249 | fwdA: 0 | motorB: 255 | fwdB: 0
+X:510 | Y: 0 | motorA: 255 | fwdA: 0 | motorB: 255 | fwdB: 0
+X:510 | Y: 0 | motorA: 255 | fwdA: 0 | motorB: 255 | fwdB: 0
+X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
+X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
+...
+```
+
+Note: to stop `miniterm` press  `CTRL + Alt Gr + ]` in the Spanish keyboard
+
+
+
 ## To do
 
 - [ ] configure and test camera
