@@ -1,3 +1,10 @@
+
+# vscode MH added 5/1/23
+.vscode/
+
+
+# TEMPLATE PYTHON
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
