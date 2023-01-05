@@ -67,7 +67,9 @@ https://forums.adafruit.com/viewtopic.php?p=930206&hilit=external+power+usb+hub#
 
 ## Controlling the motors with a joystick (4/1/23)
 
-Code: [./code/arduino/motor_joystick/motor_joystick.ino](./code/arduino/motor_joystick/motor_joystick.ino) (Inspired on [this example code for the joystick](https://www.luisllamas.es/arduino-joystick/) and [this example code for the motors](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/))
+Code: [./code/arduino/motor_joystick/motor_joystick.ino](./code/arduino/motor_joystick/motor_joystick.ino) 
+
+The script was originally inspired on [this example code for the joystick](https://www.luisllamas.es/arduino-joystick/) and [this script for controlling motors](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/), and later refined with [this implementation](https://howtomechatronics.com/tutorials/arduino/arduino-dc-motor-control-tutorial-l298n-pwm-h-bridge/) (using [Arduino's map() function](https://www.arduino.cc/reference/en/language/functions/math/map/) ) and [this discussion on translating joystick positions to motor speeds](https://coderdojoathenry.org/2019/02/24/hackers-how-to-control-a-robots-wheel-motors-based-on-joystick-movements/).
 
 Notes:
 
@@ -120,22 +122,21 @@ $ miniterm
 --- Enter port index or full name: 2
 --- Miniterm on /dev/ttyUSB0  9600,8,N,1 ---
 --- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
-X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
-X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
-X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
-X:510 | Y: 1023 | motorA: 255 | fwdA: 1 | motorB: 255 | fwdB: 1
-X:510 | Y: 1023 | motorA: 255 | fwdA: 1 | motorB: 255 | fwdB: 1
-X:510 | Y: 1023 | motorA: 255 | fwdA: 1 | motorB: 255 | fwdB: 1
-X:510 | Y: 1023 | motorA: 255 | fwdA: 1 | motorB: 255 | fwdB: 1
-X:510 | Y: 1023 | motorA: 255 | fwdA: 1 | motorB: 255 | fwdB: 1
-X:510 | Y: 568 | motorA: 28 | fwdA: 1 | motorB: 28 | fwdB: 1
-X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
-X:510 | Y: 0 | motorA: 255 | fwdA: 0 | motorB: 255 | fwdB: 0
-X:523 | Y: 0 | motorA: 249 | fwdA: 0 | motorB: 255 | fwdB: 0
-X:510 | Y: 0 | motorA: 255 | fwdA: 0 | motorB: 255 | fwdB: 0
-X:510 | Y: 0 | motorA: 255 | fwdA: 0 | motorB: 255 | fwdB: 0
-X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
-X:510 | Y: 517 | motorA: 3 | fwdA: 1 | motorB: 3 | fwdB: 1
+(X, Y): (508, 517) | motorA: 0% | motorB: 1%
+(X, Y): (510, 517) | motorA: 0% | motorB: 1%
+(X, Y): (510, 517) | motorA: 0% | motorB: 1%
+(X, Y): (510, 516) | motorA: 0% | motorB: 1%
+(X, Y): (510, 22) | motorA: -96% | motorB: -95%
+(X, Y): (493, 0) | motorA: -100% | motorB: -96%
+(X, Y): (510, 517) | motorA: 0% | motorB: 1%
+(X, Y): (510, 1023) | motorA: 99% | motorB: 100%
+(X, Y): (510, 1022) | motorA: 99% | motorB: 100%
+(X, Y): (1023, 1023) | motorA: 100% | motorB: 0%
+(X, Y): (1023, 850) | motorA: 100% | motorB: -34%
+(X, Y): (1023, 517) | motorA: 100% | motorB: -99%
+(X, Y): (661, 517) | motorA: 29% | motorB: -28%
+(X, Y): (0, 517) | motorA: -99% | motorB: 100%
+(X, Y): (0, 517) | motorA: -99% | motorB: 100%
 ...
 ```
 
@@ -152,7 +153,6 @@ Highlights of the installation:
 `````bash
 $ ls -l `which arduino`
 lrwxrwxrwx 1 root root 48 Sep  9 02:02 /usr/local/bin/arduino -> /home/mhered/Applications/arduino-1.8.19/arduino
-
 `````
 
 * No need to select a programmer, see [here](https://support.arduino.cc/hc/en-us/articles/6125080065820-Select-programmer-in-Arduino-IDE)
