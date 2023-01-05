@@ -161,8 +161,10 @@ lrwxrwxrwx 1 root root 48 Sep  9 02:02 /usr/local/bin/arduino -> /home/mhered/Ap
 Highlights of the usage:
 
 * To launch **Remote SSH** click in the green square in the bottom left corner of VS Code, select **Connect to Host** and select the host, then enter the password
-* To compile: Open Command panel with  `Ctrl + Shift + P` then start typing Verify for **Arduino: Verify** to compile. Wait for it to finish.
-* To flash: **Arduino: Upload**. Wait for compile to complete before uploading. Does not work if `miniterm` is running.
+* Every new session: Open the Command panel with  `Ctrl + Shift + P` then start typing "Select" for **Arduino: Select Sketch**. The file `.vscode/arduino.json` stores the selection of `port`, `sketch`, `board`, `configuration`, `output` otherwise select manually in the lower blue bar.
+* To compile: command **Arduino: Verify**. Monitor progress on the OUTPUT / Arduino window. Wait for it to finish before uploading.
+* To flash: command **Arduino: Upload**. Wait for compile to complete before uploading. Does not work if `miniterm` is running.
+* To monitor serial: use `miniterm` in a new Terminal
 
 ## To do
 
