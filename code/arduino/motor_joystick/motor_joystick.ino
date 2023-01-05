@@ -44,8 +44,8 @@ void loop() {
    //compute motorA, motorB and fwdA, fwdB from analog input Xvalue, Yvalue
    bool fwdA = true;
    bool fwdB = true;
-   int motorA = (Yvalue-511)/2 + (Xvalue-511)/2;
-   int motorB = (Yvalue-511)/2 - (Xvalue-511)/2;
+   int motorA = map(Yvalue,0,1023,-255,255) + map(Xvalue,0,1023,-255,255);
+   int motorB = map(Yvalue,0,1023,-255,255) - map(Xvalue,0,1023,-255,255);
       
    if (motorA < 0) 
    {
@@ -63,27 +63,21 @@ void loop() {
    if (motorB>255) motorB=255;
    
    //show values through serial
-   Serial.print("X, Y: ");
+   Serial.print("(X, Y): (");
    Serial.print(Xvalue);
    Serial.print(", ");
    Serial.print(Yvalue);
-   Serial.print(" | Motor A: ");
-   Serial.print(motorA);
-   if (fwdA == true) {
-    Serial.print(" FWD");
-   } 
-   else {
-    Serial.print(" REV");
+   Serial.print(") | motorA: ");
+   if (fwdA == false) {
+    Serial.print("-");
    }
-   Serial.print(" | Motor B: ");
-   Serial.print(motorB);
-  if (fwdB == true) {
-    Serial.println(" FWD");
+   Serial.print(map(motorA, 0,255,0,100));
+   Serial.print("% | motorB: ");
+   if (fwdB == false) {
+    Serial.print("-");
    } 
-   else {
-    Serial.println(" REV");
-   }
-   
+   Serial.print(map(motorB,0,255,0,100));   
+   Serial.println("%");      
    // operate motors
 
   if (fwdA == true)
