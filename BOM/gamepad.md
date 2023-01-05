@@ -1,4 +1,6 @@
-# Game pad
+# Game pad setup
+
+This section is largely based in [this article from Articulated Robotics](https://articulatedrobotics.xyz/mobile-robot-14a-teleop/)
 
 I use an old PS4-compatible controller by [BINBOK](https://binbok.com/) (I got it bundled with Minipupper). 8 axes, 13 buttons.
 
@@ -124,3 +126,70 @@ $ jstest-gtk
 Note: The touchpad in the gamepad controls the Mouse
 
 7. To switch off Press HOME button >10s
+
+## Gamepad in ROS
+
+`joy_node` listens to the Linux drivers of the gamepad and publishes `sensor_msgs/Joy` messages
+
+To test it:
+
+```bash
+(Terminal 1):$ ros2 run joy joy_enumerate_devices
+Joystick Device ID : Joystick Device Name
+-----------------------------------------
+                 0 : Wireless Controller
+(Terminal 1):$ ros2 run joy joy_node
+[INFO] [1672951873.296497573] [joy_node]: Opened joystick: Wireless Controller.  deadzone: 0.050000
+^C[INFO] [1672952000.449538162] [rclcpp]: signal_handler(signal_value=2)
+
+```
+
+
+
+```bash
+(Terminal 2):$ ros2 run joy joy_node
+header:
+  stamp:
+    sec: 1672951997
+    nanosec: 451926026
+  frame_id: joy
+axes:
+- -0.0
+- -0.0
+- 1.0
+- -0.0
+- -0.0
+- 1.0
+- 0.0
+- 0.0
+buttons:
+- 0
+- 0
+- 0
+- 0
+- 0
+- 0
+- 0
+- 0
+- 0
+- 0
+- 0
+- 0
+- 0
+---
+...
+```
+
+List of parametes:
+
+```
+/joy_node:
+  autorepeat_rate
+  coalesce_interval_ms
+  deadzone
+  device_id
+  device_name
+  sticky_buttons
+  use_sim_time
+```
+
