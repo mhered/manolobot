@@ -147,7 +147,7 @@ Joystick Device ID : Joystick Device Name
 
 
 ```bash
-(Terminal 2):$ ros2 run joy joy_node
+(Terminal 2):$ ros2 topic echo /joy
 header:
   stamp:
     sec: 1672951997
