@@ -44,8 +44,8 @@ void loop() {
    //compute motorA, motorB and fwdA, fwdB from analog input Xvalue, Yvalue
    bool fwdA = true;
    bool fwdB = true;
-   int motorA = map(Yvalue,0,1023,-255,255) + map(Xvalue,0,1023,-255,255);
-   int motorB = map(Yvalue,0,1023,-255,255) - map(Xvalue,0,1023,-255,255);
+   int motorA = map(Yvalue,0,1023,255,-255) + map(Xvalue,0,1023,-255,255);
+   int motorB = map(Yvalue,0,1023,255,-255) - map(Xvalue,0,1023,-255,255);
       
    if (motorA < 0) 
    {
