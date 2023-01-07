@@ -61,7 +61,12 @@ void loop() {
 
    if (motorA>255) motorA=255;
    if (motorB>255) motorB=255;
-   
+
+  // avoid humming
+  if (motorA<15) motorA = 0;
+  if (motorB<15) motorB = 0;
+  
+
    //show values through serial
    Serial.print("(X, Y): (");
    Serial.print(Xvalue);
