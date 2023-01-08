@@ -44,8 +44,8 @@ void loop() {
    //compute motorA, motorB and fwdA, fwdB from analog input Xvalue, Yvalue
    bool fwdA = true;
    bool fwdB = true;
-   int motorA = map(Yvalue,0,1023,-255,255) + map(Xvalue,0,1023,-255,255);
-   int motorB = map(Yvalue,0,1023,-255,255) - map(Xvalue,0,1023,-255,255);
+   int motorA = map(Yvalue,0,1023,255,-255) + map(Xvalue,0,1023,-255,255);
+   int motorB = map(Yvalue,0,1023,255,-255) - map(Xvalue,0,1023,-255,255);
       
    if (motorA < 0) 
    {
@@ -61,7 +61,12 @@ void loop() {
 
    if (motorA>255) motorA=255;
    if (motorB>255) motorB=255;
-   
+
+  // avoid humming
+  if (motorA<15) motorA = 0;
+  if (motorB<15) motorB = 0;
+  
+
    //show values through serial
    Serial.print("(X, Y): (");
    Serial.print(Xvalue);
