@@ -168,6 +168,12 @@ Highlights of the usage:
 * To flash: command **Arduino: Upload**. Wait for compile to complete before uploading. Does not work if `miniterm` is running.
 * To monitor serial: use `miniterm` in a new Terminal
 
+## Chassis (7/1/23)
+
+![](./assets/images/2023.01.07_1st_test_on_chassis.jpeg)
+
+![](./assets/images/2023.01.07_all_aboard.jpeg)
+
 ## To do
 
 - [x] connect motors 
