@@ -17,7 +17,7 @@ $ sudo apt-get install libcanberra-gtk-module libcanberra-gtk0
 3. Disconnect USB. Press HOME + SHARE until the light flashes White to pair. 
 4. Open Bluetooth Settings Blue light click on Wireless Controller to Connect. Light turns Blue.
 
-<img src="../assets/images/pairing_gamepad.png" style="zoom:67%;" />
+<img src="./assets/images/pairing_gamepad.png" style="zoom:67%;" />
 
 
 
@@ -119,7 +119,7 @@ Event: time 1672950462.623186, type 3 (EV_ABS), code 1 (ABS_Y), value 58
 $ jstest-gtk
 ```
 
-![](../assets/images/jstest-gtk.png)
+![](./assets/images/jstest-gtk.png)
 
 
 

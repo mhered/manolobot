@@ -22,8 +22,8 @@ Max Power Dissipation	25W
 
 ## Pinout
 
-![motor_driver_wiring](../assets/images/motor_driver_wiring.jpg)
+![motor_driver_wiring](./assets/images/motor_driver_wiring.jpg)
 
-![motor_driver_wiring](../assets/images/L298n.png)
+![motor_driver_wiring](./assets/images/L298n.png)
 
-![motor_driver_wiring](../assets/images/L298n_diagram.png)
+![motor_driver_wiring](./assets/images/L298n_diagram.png)

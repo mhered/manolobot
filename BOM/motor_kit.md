@@ -9,6 +9,8 @@
 * 1 x Motor Cable (14.2cm)
 * 1 Set of Screws
 
+![](./assets/images/contents.jpg)
+
 ## Wheel
 
 Diameter: 65MM 
@@ -24,6 +26,8 @@ Rubber tire with a sponge liner
 Nylon wheel hub for hex coupling
 
 Tire tread pattern: imitation HPI drift pattern load capacity grip
+
+
 
 ![wheel](./assets/images/wheel.jpg)
 
