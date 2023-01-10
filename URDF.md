@@ -153,3 +153,10 @@ Notes:
 2. quit (ctrl+c) and relaunch the robot state publisher with. `$ ros2 launch manolobot rsp.launch.py`every time you make a change
 
 3. click **Reset** to refresh RVIZ so it picks up changes. If this does not work tick/untick display items or close/reopen as last resource
+
+To save the state of RVIZ: Save as... in `./config/view_bot.rviz` then open rviz with the rviz file as parameter:
+
+```
+$ rviz2 -d dev_ws/src/manolobot_uno/config/view_bot.rviz
+```
+
