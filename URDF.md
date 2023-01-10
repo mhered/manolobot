@@ -1,5 +1,9 @@
 # Describing the robot in URDF
 
+![](./assets/images/URDF.png)
+
+
+
 ## Prerequisites
 
 - [x] installed ROS
@@ -153,6 +157,41 @@ Notes:
 2. quit (ctrl+c) and relaunch the robot state publisher with. `$ ros2 launch manolobot rsp.launch.py`every time you make a change
 
 3. click **Reset** to refresh RVIZ so it picks up changes. If this does not work tick/untick display items or close/reopen as last resource
+
+
+
+1. To get started, go to the workspace and source it:
+
+```bash
+(Terminal 1):$ cd dev_ws
+$ source install/setup.bash
+```
+
+2. With every change run the launch file:
+
+```bash
+$ ros2 launch manolobot_uno rsp.launch.py
+```
+
+If new files are present rebuild the workspace with `colcon` before the launch file:
+
+```
+$ colcon build --symlink-install
+```
+
+3. to view run RVIZ in another terminal
+
+```bash
+(Terminal 3):$ rviz2 -d dev_ws/src/manolobot_uno/config/view_bot.rviz
+```
+
+4. to publish dynamic joints run `joint_state_publisher_gui` in another terminal 
+
+```bash
+(Terminal 2):$ ros2 run joint_state_publisher_gui joint_state_publisher_gui
+```
+
+
 
 To save the state of RVIZ: Save as... in `./config/view_bot.rviz` then open rviz with the rviz file as parameter:
 
