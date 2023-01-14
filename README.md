@@ -6,5 +6,6 @@ This project is inspired in the phenomenal series of blog and video tutorials [A
 
 * [Part 1](./Part-1-Getting-ready-ROS2-Aug22-XX.md): Notes on Articulated Robotics - Getting ready for ROS series 
 * [Part 2](./Part-2-Mobile-Robot-project.md): Notes on Articulated Robotics - Making a Mobile Robot series
-* [Part 3](Part-3-manolobot-Nov22.md): Notes on **manolobot** my own ROS2-based mobile robot with camera and LIDAR
+* [Part 3](Part-3-manolobot-Nov22.md): Notes on building **manolobot** my own ROS2-based mobile robot with camera and LIDAR
+* [Part 4](Part-4-Simulation-Jan23.md): Notes on simulating the robot **manolobot_uno**
 
