@@ -199,14 +199,48 @@ To save the state of RVIZ: Save as... in `./config/view_bot.rviz` then open rviz
 $ rviz2 -d dev_ws/src/manolobot_uno/config/view_bot.rviz
 ```
 
+# Merging manolobot_uno into the main repo manolobot 
+
+Based on **The good way to download code from internet**, see [notes on ETH Zurich course](https://github.com/mhered/ROS-notes/blob/main/ROS-notes/ROS_ETH_Zurich_L1.md). 
+
+Rather than having multiple repos I copy the folder into the main one and symlink to `dev_ws/src`. 
+
+This is way cleaner:
+
+1. copy the contents of the repo to a folder inside `manolobot`
+
+```bash
+$ mv ~/dev_ws/src/manolobot_uno ~/manolobot/
+```
+
+2. Symlink it to `dev_ws`
+
+```bash
+$ ln -s ~/manolobot/manolobot_uno/ ~/dev_ws/src/
+```
+
+3. Build it and re-source environment
+
+```bash
+$ colcon build --symlink-install
+$ cd ~/dev_ws
+$ source install/setup.bash
+```
+
+4. execute it:
+
+```bash
+$ ros2 launch manolobot_uno rsp.launch.py
+```
+
 # Running gazebo
 
 Blog: https://articulatedrobotics.xyz/mobile-robot-3-concept-gazebo/
 
-1. Launch `robot_state_publisher` with sim time: (**NOTE: replace `my_repo`**)
+1. Launch `robot_state_publisher` with sim time:
 
 ```bash
-(Terminal 1):$ ros2 launch my_repo rsp.launch.py use_sim_time:=true
+(Terminal 1):$ ros2 launch manolobot_uno rsp.launch.py use_sim_time:=true
 ```
 
 2. Install - if not done before - and launch gazebo with ROS compatibility:

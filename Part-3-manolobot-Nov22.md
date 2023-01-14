@@ -174,6 +174,8 @@ Highlights of the usage:
 
 ![](./assets/images/2023.01.07_all_aboard.jpeg)
 
+
+
 ## To do
 
 - [x] connect motors 
