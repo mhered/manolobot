@@ -199,3 +199,26 @@ To save the state of RVIZ: Save as... in `./config/view_bot.rviz` then open rviz
 $ rviz2 -d dev_ws/src/manolobot_uno/config/view_bot.rviz
 ```
 
+# Running gazebo
+
+Blog: https://articulatedrobotics.xyz/mobile-robot-3-concept-gazebo/
+
+1. Launch `robot_state_publisher` with sim time: (**NOTE: replace `my_repo`**)
+
+```bash
+(Terminal 1):$ ros2 launch my_repo rsp.launch.py use_sim_time:=true
+```
+
+2. Install - if not done before - and launch gazebo with ROS compatibility:
+
+```bash
+$ sudo apt install ros-foxy-gazebo-ros-pkgs
+(Terminal 2):$ ros2 launch gazebo_ros gazebo.launch.py
+```
+
+3. Spawn the robot:
+
+```bash
+(Terminal 3):$ ros2 run gazebo_ros spawn_entity.py -topic robot_description -entity manolobot
+```
+
