@@ -144,3 +144,32 @@ $ sudo apt install ros-foxy-gazebo-ros-pkgs
 (Terminal 3):$ ros2 run gazebo_ros spawn_entity.py -topic robot_description -entity manolobot
 ```
 
+Prepared  [launch_sim.launch.py](./manolobot_uno/launch/launch_sim.launch.py) to achieve the same effect (launch gazebo and spawn the robot) but with a single command:
+
+```bash
+$ ros2 launch manolobot_uno launch_sim.launch.py
+```
+
+* Created`gazebo_control.xacro` , a new file with the configuration of the `diff_drive` plugin for gazebo
+
+* Properties definition (robot dimensions etc) need to be used now as well by `gazebo_control.xacro` so I moved their definition from `robot_core.xacro` to a separate file `properties.xacro`  and included it from `robot.urdf.xacro`.
+
+* Modified `robot.urdf.xacro`to add calls to both `properties.xacro` and `gazebo_control.xacro`
+
+* Modified `robot_core.xacro`:
+
+  * added gazebo tags to define colors for each link
+
+  * added very low friction coefficients mu1 mu2 for caster wheels
+
+With this it is possible to control the robot in the simulation using `teleop_key`:
+
+```bash
+$ ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+
+* Adjusted the masses to get a proper behavior of the simulation. **Note: the values are not real ones, need to make measurements!!**
+* Created launch file `joystick.launch` and parameter file `joystick.yaml` to configure and launch support for PS4 gamepad as follows: 
+  *  Dead man switches: L button (left shoulder) for normal speed, R button (right shoulder) for turbo
+  * Control on left stick: vertical axis for forward/backward motion and horizontal axis for rotation. 
+* See details of the setup of the gamepad in [./BOM/gamepad.md](./BOM/gamepad.md)

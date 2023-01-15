@@ -7,8 +7,8 @@ from ament_index_python.packages import get_package_share_directory
 """" 
     This launch file:
     - Specifies the path to a params file
-    - Declares a joy node that uses the params file
-    - Launches it
+    - Declares a joy_node node that uses the params file & launches it
+    - Declares a teleop_node node that uses the params file & launches it
 """
 
 def generate_launch_description():
