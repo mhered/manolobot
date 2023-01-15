@@ -131,6 +131,8 @@ Note: The touchpad in the gamepad controls the Mouse
 
 `joy_node` listens to the Linux drivers of the gamepad and publishes `sensor_msgs/Joy` messages
 
+Documentation: https://github.com/ros-drivers/joystick_drivers/tree/ros2/joy
+
 To test it:
 
 ```bash
@@ -144,7 +146,15 @@ Joystick Device ID : Joystick Device Name
 
 ```
 
+Created `./launch/joystick.launch` - which simply specifies the path to the parameter file, declares a `joy_node` node that uses the params file and launches it. Created also a parameter file `./config/joystick.yaml` with default parameters
 
+After source and build, you can launch the fileas follow to achieve the same effect as `ros2 run joy joy_node`:
+
+```bash
+$ ros2 launch manolobot_uno joystick.launch.py
+```
+
+Then to test it:
 
 ```bash
 (Terminal 2):$ ros2 topic echo /joy
@@ -193,3 +203,13 @@ List of parametes:
   use_sim_time
 ```
 
+`teleop-twist-joy` listens to raw joystick commands on `/joy`  topic and translates them into `Twist` messages
+
+```
+$ sudo apt-get install ros-foxy-teleop-twist-joy
+```
+
+Added to `./launch/joystick.launch` the declaration and launch of a `teleop_node` with the same parameter file  `./config/joystick.yaml` which defines the controls: 
+
+- Dead man switches: L button (left shoulder) for normal speed, R button (right shoulder) for turbo
+- Control on left stick: vertical axis for forward/backward motion and horizontal axis for rotation. 
