@@ -5,7 +5,7 @@
     <xacro:property name="L_x" value="0.29"/> <!-- box length -->
     <xacro:property name="L_y" value="0.19"/> <!-- box width -->
     <xacro:property name="L_z" value="0.124"/> <!-- box height -->
-    <xacro:property name="box_mass" value="0.1"/> <!-- box mass -->
+    <xacro:property name="box_mass" value="0.05"/> <!-- box mass -->
 
     <!-- wheels -->
     <xacro:property name="W_x" value="0.066"/> <!-- wheel axis x-offset from centre -->
@@ -13,14 +13,14 @@
     <xacro:property name="W_y" value="0.122"/> <!-- wheel half separation -->
     <xacro:property name="W_D" value="0.065"/> <!-- wheel diameter -->
     <xacro:property name="W_h" value="0.026"/> <!-- wheel width -->
-    <xacro:property name="W_mass" value="0.1"/> <!-- wheel mass -->
+    <xacro:property name="W_mass" value="0.05"/> <!-- wheel mass -->
 
     <!-- casters -->
     <xacro:property name="c_x" value="0.024"/> <!-- caster centre x-offset from edge -->
     <xacro:property name="c_y" value="0.024"/> <!-- caster centre y-offset from edge -->
     <xacro:property name="c_z" value="0.052"/> <!-- caster contact z-offset from bottom -->
     <xacro:property name="c_D" value="0.016"/> <!-- caster diameter -->
-    <xacro:property name="c_mass" value="0.1"/> <!-- caster mass -->
+    <xacro:property name="c_mass" value="0.05"/> <!-- caster mass -->
 
     <!-- motors -->
     <xacro:property name="m_y" value="0.04"/> <!-- motor y-offset from centre-->
@@ -28,6 +28,6 @@
     <xacro:property name="m_D" value="0.02"/> <!-- motor body diameter -->
     <xacro:property name="m_l" value="0.009"/> <!-- motor coupling length -->
     <xacro:property name="m_d" value="0.011"/> <!-- motor coupling diameter -->
-    <xacro:property name="m_mass" value="0.1"/> <!-- motor mass -->
+    <xacro:property name="m_mass" value="0.05"/> <!-- motor mass -->
     
 </robot>
