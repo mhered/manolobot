@@ -172,11 +172,24 @@ Highlights of the usage:
 
 ## Chassis (7/1/23)
 
+* First test on the chassis
 ![](./assets/images/2023.01.07_1st_test_on_chassis.jpeg)
 
+* All aboard! - including the rubber duckie
 ![](./assets/images/2023.01.07_all_aboard.jpeg)
 
+## Details (12/1/23)
 
+* Adding details: casters, grommets, a switch...
+![](./assets/images/2023.01.12_mechanical_assy.jpeg)
+
+* All the electronics back in
+![](./assets/images/2023.01.12_electronics_in.jpeg)
+
+## Order in the house (17/1/23)
+
+* Some order inside the chassis:
+![](./assets/images/2023.01.17_order_in_the_house.jpeg)
 
 ## To do
 
