@@ -19,6 +19,8 @@
 | 1    | [Pi Camera](./BOM/pi_camera.md)                           | ![pi_camera](./assets/images/pi_camera.jpg)                  | Pi Camera v1.3 with acrilic support                          |                                                              |               |
 | 1    | [Gamepad](./BOM/gamepad.md)                               | ![](./assets/images/gamepad.jpg)                             | PS4-compatible Bluetooth game controller. Mine came bundled with Minipupper | [Fnac](https://www.fnac.es/mp8198387/Mando-USB-con-cable-Smart-Gamepad-para-PC-PS4/w-4?oref=98dfe269-3c11-af3c-116a-61fe4db3ab7a) | 17,90€        |
 | 1    | [Chassis](./BOM/chassis.md)                               | ![](./assets/images/storage_box.png)                         | Based on a 29 x 19 x 12.4 cm Keeeper Hubert + Hilda plastic storage box with tray, used for the chassis of the robot. I purchased mine in the local Leroy Merlin. | [Amazon](https://www.amazon.de/keeeper-Hubert-Hilda-Storage-Transparent/dp/B092JKYLW5?ref_=ast_sto_dp) | 8,63€         |
+| 1    | [Battery](./BOM/battery.md)                               | ![](./assets/images/HRB_battery.png)                         | HRB Battery RC LiPo 5000mAh 11.1V 3S 50C XT60 Connector with 4 adapter parts. 308 g. | [Amazon](https://www.amazon.es/gp/product/B086JP7PCC/)       | 35,99€        |
+| 1    | Balance charger                                           | ![](./assets/images/balance_charger.png)                     | WANGCL IMAX B6AC Lipo Battery charger B6 80W Digital LCD Lipo Cargador  11-18V con adaptador para plomo ácido NI-CD/NI-MH 1-6S LI-PO | [Amazon](https://www.amazon.es/gp/product/B0B3GM8KX9/)       | 42,99€        |
 
 ## First prototype (20/11/22)
 
