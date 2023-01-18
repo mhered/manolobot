@@ -20,33 +20,33 @@
     <joint name="chassis_joint" type = "fixed">
         <parent link="base_link" />
         <child link="chassis_link" />
-        <origin xyz="${W_x-L_x/2} 0 ${W_z}" />
+        <origin xyz="${W_x-box_x/2} 0 ${W_z}" />
     </joint>
     
     <link name="chassis_link">
         <visual>
             <geometry>
-                <box size="${L_x} ${L_y} ${L_z}"/>
+                <box size="${box_x} ${box_y} ${box_z}"/>
             </geometry>
-            <origin xyz="${L_x/2} 0 ${L_z/2}" />
-            <material name="green" />
+            <origin xyz="${box_x/2} 0 ${box_z/2}" />
+            <material name="white" />
         </visual>
 
         <collision>
             <geometry>
-                <box size="${L_x} ${L_y} ${L_z}"/>
+                <box size="${box_x} ${box_y} ${box_z}"/>
             </geometry>
-            <origin xyz="${L_x/2} 0 ${L_z/2}" />
+            <origin xyz="${box_x/2} 0 ${box_z/2}" />
         </collision>
 
-        <xacro:inertial_box mass="${box_mass}" x="${L_x}" y="${L_y}" z="${L_z}">
-            <origin xyz="${L_x/2} 0 ${L_z/2}" rpy="0 0 0" />
+        <xacro:inertial_box mass="${box_mass}" x="${box_x}" y="${box_y}" z="${box_z}">
+            <origin xyz="${box_x/2} 0 ${box_z/2}" rpy="0 0 0" />
         </xacro:inertial_box>
 
     </link>
 
     <gazebo reference="chassis_link">
-        <material>Gazebo/Green</material>
+        <material>Gazebo/White</material>
     </gazebo>
 
     <!-- LEFT WHEEL LINK --> 
@@ -63,7 +63,7 @@
             <geometry>
                 <cylinder radius="${W_D/2}" length="${W_h}" />
             </geometry>
-            <material name="dark_gray" />
+            <material name="blue" />
         </visual>
 
         <collision>
@@ -96,7 +96,7 @@
             <geometry>
                 <cylinder radius="${W_D/2}" length="${W_h}" />
             </geometry>
-            <material name="dark_gray" />
+            <material name="blue" />
         </visual>
 
         <collision>
@@ -115,12 +115,12 @@
         <material>Gazebo/Blue</material>
     </gazebo>
 
-<!-- LEFT CASTER WHEEL LINK --> 
+<!-- LEFT CASTER WHEEL LINK -->
 
     <joint name="left_caster_wheel_joint" type = "fixed">
         <parent link="chassis_link" />
         <child link="left_caster_wheel_link" />
-        <origin xyz="${L_x-c_x} ${L_y/2-c_y} -${c_z}" />
+        <origin xyz="${box_x-c_x} ${box_y/2-c_y} ${-c_z}" />
     </joint>
     
     <link name="left_caster_wheel_link">
@@ -128,7 +128,7 @@
             <geometry>
                 <sphere radius="${c_D/2}" />
             </geometry>
-            <material name="yellow" />
+            <material name="orange" />
         </visual>
 
         <collision>
@@ -144,17 +144,19 @@
     </link>
 
     <gazebo reference="left_caster_wheel_link">
-        <material>Gazebo/Yellow</material>
+        <material>Gazebo/Orange</material>
         <mu1 value="0.0001" />
         <mu2 value="0.0001" />
     </gazebo>
 
-<!-- RIGHT CASTER WHEEL LINK --> 
+
+
+<!-- RIGHT CASTER WHEEL LINK     -->
 
     <joint name="right_caster_wheel_joint" type = "fixed">
         <parent link="chassis_link" />
         <child link="right_caster_wheel_link" />
-        <origin xyz="${L_x-c_x} ${-L_y/2+c_y} -${c_z}" />
+        <origin xyz="${box_x-c_x} ${-box_y/2+c_y} ${-c_z}" />
     </joint>
     
     <link name="right_caster_wheel_link">
@@ -182,6 +184,8 @@
         <mu1 value="0.0001" />
         <mu2 value="0.0001" />
     </gazebo>
+
+
 
     <!-- LEFT MOTOR LINK --> 
 
@@ -223,6 +227,7 @@
     <gazebo reference="left_motor_link">
         <material>Gazebo/Red</material>
     </gazebo>
+
 
     <!-- RIGHT MOTOR LINK --> 
 

@@ -2,9 +2,9 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
     <!-- box -->
-    <xacro:property name="L_x" value="0.29"/> <!-- box length -->
-    <xacro:property name="L_y" value="0.19"/> <!-- box width -->
-    <xacro:property name="L_z" value="0.124"/> <!-- box height -->
+    <xacro:property name="box_x" value="0.29"/> <!-- box length -->
+    <xacro:property name="box_y" value="0.19"/> <!-- box width -->
+    <xacro:property name="box_z" value="0.124"/> <!-- box height -->
     <xacro:property name="box_mass" value="0.05"/> <!-- box mass -->
 
     <!-- wheels -->
@@ -18,7 +18,7 @@
     <!-- casters -->
     <xacro:property name="c_x" value="0.024"/> <!-- caster centre x-offset from edge -->
     <xacro:property name="c_y" value="0.024"/> <!-- caster centre y-offset from edge -->
-    <xacro:property name="c_z" value="0.052"/> <!-- caster contact z-offset from bottom -->
+    <xacro:property name="c_z" value="0.049"/> <!-- caster contact z-offset from bottom -->
     <xacro:property name="c_D" value="0.016"/> <!-- caster diameter -->
     <xacro:property name="c_mass" value="0.05"/> <!-- caster mass -->
 
@@ -29,5 +29,13 @@
     <xacro:property name="m_l" value="0.009"/> <!-- motor coupling length -->
     <xacro:property name="m_d" value="0.011"/> <!-- motor coupling diameter -->
     <xacro:property name="m_mass" value="0.05"/> <!-- motor mass -->
-    
+
+    <!--lidar -->
+    <xacro:property name="L_x" value="0.0"/> <!-- Lidar x-offset from box centre -->
+    <xacro:property name="L_z" value="0.023"/> <!-- Lidar z-offset from box top -->
+    <xacro:property name="L_D" value="0.038"/> <!-- Lidar head diameter -->
+    <xacro:property name="L_h" value="0.013"/> <!-- Lidar unit height -->
+    <xacro:property name="L_mass" value="0.0042"/> <!-- Lidar mass -->
+
+
 </robot>

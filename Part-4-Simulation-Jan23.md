@@ -125,6 +125,8 @@ $ ros2 launch manolobot_uno rsp.launch.py
 
 Blog: https://articulatedrobotics.xyz/mobile-robot-3-concept-gazebo/
 
+Check also: https://articulatedrobotics.xyz/ready-for-ros-8-gazebo/
+
 1. Launch `robot_state_publisher` with sim time:
 
 ```bash
@@ -147,7 +149,7 @@ $ sudo apt install ros-foxy-gazebo-ros-pkgs
 Prepared  [launch_sim.launch.py](./manolobot_uno/launch/launch_sim.launch.py) to achieve the same effect (launch gazebo and spawn the robot) but with a single command:
 
 ```bash
-$ ros2 launch manolobot_uno launch_sim.launch.py
+(Terminal 1):$ ros2 launch manolobot_uno launch_sim.launch.py
 ```
 
 * Created`gazebo_control.xacro` , a new file with the configuration of the `diff_drive` plugin for gazebo
@@ -165,7 +167,7 @@ $ ros2 launch manolobot_uno launch_sim.launch.py
 With this it is possible to control the robot in the simulation using `teleop_key`:
 
 ```bash
-$ ros2 run teleop_twist_keyboard teleop_twist_keyboard
+(Terminal 2):$ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
 
 * Adjusted the masses to get a proper behavior of the simulation. **Note: the values are not real ones, need to make measurements!!**
@@ -173,3 +175,26 @@ $ ros2 run teleop_twist_keyboard teleop_twist_keyboard
   *  Dead man switches: L button (left shoulder) for normal speed, R button (right shoulder) for turbo
   * Control on left stick: vertical axis for forward/backward motion and horizontal axis for rotation. 
 * See details of the setup of the gamepad in [./BOM/gamepad.md](./BOM/gamepad.md)
+
+Launch with:
+
+```bash
+(Terminal 2):$ ros2 launch manolobot_uno joystick.launch.py
+```
+
+# Tips & tricks
+
+* to open Gazebo in a world:
+
+```bash
+(Terminal 1):$ ros2 launch manolobot_uno launch_sim.launch.py world:=./src/manolobot_uno/worlds/cones.world use_sim_time:=true
+```
+
+* to force Gazebo to update changes in the model: close all other terminals, source, if necessary kill hung up processes with:
+
+```bash
+$ sudo killall -9 gazebo gzserver gzclient
+```
+
+
+
