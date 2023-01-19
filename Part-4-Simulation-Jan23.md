@@ -182,6 +182,12 @@ Launch with:
 (Terminal 2):$ ros2 launch manolobot_uno joystick.launch.py
 ```
 
+* Driving `manolobot_uno` around in Gazebo:
+
+![](./assets/images/gazebo1.gif)
+
+
+
 # Tips & tricks
 
 * to open Gazebo in a world:
