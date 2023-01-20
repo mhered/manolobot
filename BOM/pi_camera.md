@@ -52,3 +52,31 @@ However this guy claims `raspiconfig` can be installed in Ubuntu Mate: https://u
 
 To be continued... 
 
+# Cameras in ROS
+
+cfr. https://articulatedrobotics.xyz/mobile-robot-9-camera/
+
+Conversion between field of view and focal length:
+$$
+fov = 2 atan (sensorwidth/2 focallength)
+$$
+Image axes: 
+
+x: left to right
+
+y: top to bottom
+
+z: into the page / away from the camera
+
+A driver node talks to the camera hardware and publishes:
+
+* `sensor_msgs/Image` messages with the unprocessed images to topic `/my_camera/image_raw` 
+*  `sensor_msgs/CompressedImage` messages with compressed images to topic `/my_camera/image_raw/compressed`
+
+*  `sensor_msgs/CameraInfo` messages with calibration, distortion coefficients needed to interpret the raw image data to topic `/my_camera/camera_info` 
+
+ROS Library `image_transport` provides tools to convert from uncompressed to compressed images. ROS packages `image_proc/image_pipelines` publish topics such as `image_color` or `image_rect` using `camera_info` which are more convenient to to be used by algorithms
+
+All topics in `camera_link_optical` are associated to TF frame which is an empty link used as alias and related to `camera_link` with a rotation `rpy="${-pi/2} 0 ${-pi/2}"`
+
+![](./assets/images/camera_axes_ROS.png)

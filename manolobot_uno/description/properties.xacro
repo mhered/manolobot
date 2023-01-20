@@ -37,5 +37,14 @@
     <xacro:property name="L_h" value="0.013"/> <!-- Lidar unit height -->
     <xacro:property name="L_mass" value="0.0042"/> <!-- Lidar mass -->
 
+    <!--camera -->
+    <xacro:property name="cam_x" value="0.0"/> <!-- Camera x-offset from box front face -->
+    <xacro:property name="cam_z" value="-0.03"/> <!-- Lidar z-offset from box top -->
+    <xacro:property name="cam_dx" value="0.01"/> <!-- Camera box thickness -->
+    <xacro:property name="cam_dy" value="0.04"/> <!-- Camera box width -->
+    <xacro:property name="cam_dz" value="0.03"/> <!-- Camera box height -->
+    <xacro:property name="cam_mass" value="0.002"/> <!-- Camera mass -->
+
+
 
 </robot>
