@@ -1,5 +1,3 @@
-# 
-
 # Prerequisites
 
 - [x] installed ROS (See video [Getting Ready for ROS Part 3: Installing ROS](https://articulatedrobotics.xyz/ready-for-ros-3-installing-ros/) and cfr. my notes in [Part-1-Getting-ready-ROS2-Aug22-Jan23.md](Part-1-Getting-ready-ROS2-Aug22-Jan23.md))

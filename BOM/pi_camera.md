@@ -251,10 +251,46 @@ Launch driver node:
 (Rpi):$ ros2 run v4l2_camera v4l2_camera_node --ros-args -p image_size:="[640,480]" -p camera_frame_id:=camera_link_optical
 ```
 
-Launch `rqt_image_view` from PC:
+which is equivalent to the following `camera.launch.py` launch file 
+
+```python
+import os
+
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+
+    return LaunchDescription([
+
+        Node(
+            package='v4l2_camera',
+            executable='v4l2_camera_node',
+            output='screen',
+            parameters=[{
+                'image_size': [640,480],
+                'camera_frame_id': 'camera_link_optical'
+                }]
+    )
+    ])
+```
+
+Note: To run the launch file first we have to pull the changes to the local repo in the robot, make a workspace, symlink the repo and build the package (I had done all this in the PC but not yet in the robot):
+
+```bash
+$ mkdir ~/dev_ws && cd ~/dev_ws
+$ mkdir src && cd src
+ln -s ~/manolobot/manolobot_uno/ ~/dev_ws/src/
+$ cd ..
+$ colcon build --symlink-install
+$ source install/setup.bash
+$ ros2 launch manolobot_uno camera.launch.py
+```
+
+Then launch `rqt_image_view` from the PC:
 
 ```bash
 (PC):$ ros2 run rqt_image_view rqt_image_view
 ```
 
-Note: it starts broadcasting after a time only over `/image_raw_compressed/`
+Note: it broadcasts only over `/image_raw_compressed/`
