@@ -294,3 +294,9 @@ Then launch `rqt_image_view` from the PC:
 ```
 
 Note: it broadcasts only over `/image_raw_compressed/`
+
+## Next steps
+
+- [ ] modify camera launch file to also convert compressed to raw images and broadcast them (maybe from PC?)
+- [ ] Explore v4l2 repo: https://gitlab.com/boldhearts/ros2_v4l2_camera/-/tree/foxy 
+- [ ] Explore: https://medium.com/swlh/raspberry-pi-ros-2-camera-eef8f8b94304 includes ROS2 in Raspbian, v4l2, and tips about going further with opencv and ROS2 tensorflow lite
