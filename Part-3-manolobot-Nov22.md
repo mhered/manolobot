@@ -191,6 +191,12 @@ Highlights of the usage:
 * Some order inside the chassis:
 ![](./assets/images/2023.01.17_order_in_the_house.jpeg)
 
+## Selfie  (21/1/23)
+
+A selfie to celebrate that the camera onboard the `manolobot_uno ` is broadcasting!
+
+![](./assets/images/selfie.png)
+
 ## To do
 
 - [x] connect motors 
@@ -198,10 +204,10 @@ Highlights of the usage:
 
 - [ ] connect and test encoders
 - [ ] command motor through ROS 
-- [ ] configure and test camera
+- [x] configure and test camera
 - [ ] configure and test lidar
 
-- [ ] make layout of components in board
+- [ ] improve layout of components inside chassis
 - [ ] purchase and install battery
 - [ ] solve issues with screen 
 - [ ] configure face in screen
