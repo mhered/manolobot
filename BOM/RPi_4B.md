@@ -39,6 +39,7 @@ crw-rw---- 1 root gpio 244, 0 Dec 28 22:51 /dev/gpiomem
 * https://www.electroniclinic.com/how-to-reset-or-shutdown-raspberry-pi-using-a-button/
 
 * https://learn.sparkfun.com/tutorials/raspberry-pi-safe-reboot-and-shutdown-button/all
+* https://www.ridgesolutions.ie/index.php/2013/02/22/raspberry-pi-restart-shutdown-your-pi-from-python-code/
 * https://raspberrypi.stackexchange.com/questions/69194/using-gpiozero-button-for-2-functions-long-short-press
 
 5. Create `/etc/rc.local`:
