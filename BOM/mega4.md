@@ -21,7 +21,7 @@ Download and run the installation script to install the software in `mega4` dire
 (RPi):$ sudo sh install.sh
 ```
 
-Note: `sudo` is needed because to disable USB auto-suspend in `/boot/cmdline.txt`.
+Note: `sudo` is needed to run the script because it attempts to disable USB auto-suspend in `/boot/cmdline.txt`.
 
 After installing the software, reboot the RPi so the UWI server will run in the background. 
 
