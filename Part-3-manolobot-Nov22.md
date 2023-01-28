@@ -21,7 +21,7 @@
 | 1    | [Chassis](./BOM/chassis.md)                               | ![](./assets/images/storage_box.png)                         | Based on a 29 x 19 x 12.4 cm Keeeper Hubert + Hilda plastic storage box with tray, used for the chassis of the robot. I purchased mine in the local Leroy Merlin. | [Amazon](https://www.amazon.de/keeeper-Hubert-Hilda-Storage-Transparent/dp/B092JKYLW5?ref_=ast_sto_dp) | 8,63€         |
 | 1    | [Battery](./BOM/battery.md)                               | ![](./assets/images/HRB_battery.png)                         | HRB Battery RC LiPo 5000mAh 11.1V 3S 50C XT60 Connector with 4 adapter parts. 308 g. | [Amazon](https://www.amazon.es/gp/product/B086JP7PCC/)       | 35,99€        |
 | 1    | Balance charger                                           | ![](./assets/images/balance_charger.png)                     | WANGCL IMAX B6AC Lipo Battery charger B6 80W Digital LCD Lipo Cargador  11-18V con adaptador para plomo ácido NI-CD/NI-MH 1-6S LI-PO | [Amazon](https://www.amazon.es/gp/product/B0B3GM8KX9/)       | 42,99€        |
-| 1    | [Mega4 USB Hub](.BOM/mega4.md)                            | ![](./BOM/assets/images/mega4.jpg)                           | UUGEAR MEGA4: 4-Port USB 3.1 PPPS Hub for Raspberry Pi 4B    | [The Pi Hut](https://thepihut.com/products/mega4-4-port-usb-3-1-ppps-hub-for-raspberry-pi-4) | £29,00        |
+| 1    | [Mega4 USB Hub](./BOM/mega4.md)                           | ![](./BOM/assets/images/mega4.jpg)                           | UUGEAR MEGA4: 4-Port USB 3.1 PPPS Hub for Raspberry Pi 4B    | [The Pi Hut](https://thepihut.com/products/mega4-4-port-usb-3-1-ppps-hub-for-raspberry-pi-4) | £29,00        |
 
 ## First prototype (20/11/22)
 
