@@ -16,7 +16,7 @@ Carbon fibre rigid case: 155×44×24mm (0 - 3mm Unterschied)
 
 Weight 376 g
 
-Safe charging rate: 0.5-1C
+Safe charging rate: 0.5-1C (i.e. in my case 5A)
 
 ## Rationale for the choice of battery
 
