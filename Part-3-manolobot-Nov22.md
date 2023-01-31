@@ -64,13 +64,13 @@ Note: Powering the adafruit USB hub https://forums.adafruit.com/viewtopic.php?p=
 * installed flat HDMI cable, USB-C pigtail
 * discarded USB hub (not needed)
 
-<img src="./assets/images/diagram.png" style="zoom:80%;" />
+![](./assets/images/diagram.png)
 
 <img src="./assets/images/2022.12.28_status_manolobot.jpeg" style="zoom:80%;" />
 
 ## Controlling the motors with a joystick (4/1/23)
 
-Code: [./arduino/motor_joystick/motor_joystick.ino](./arduino/motor_joystick/motor_joystick.ino) 
+Code: [./code/arduino/motor_joystick/motor_joystick.ino](./code/arduino/motor_joystick/motor_joystick.ino) 
 
 The script was originally inspired on [this example code for the joystick](https://www.luisllamas.es/arduino-joystick/) and [this script for controlling motors](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/), and later refined with [this implementation](https://howtomechatronics.com/tutorials/arduino/arduino-dc-motor-control-tutorial-l298n-pwm-h-bridge/) (using [Arduino's map() function](https://www.arduino.cc/reference/en/language/functions/math/map/) ) and [this discussion on translating joystick positions to motor speeds](https://coderdojoathenry.org/2019/02/24/hackers-how-to-control-a-robots-wheel-motors-based-on-joystick-movements/).
 
@@ -91,7 +91,7 @@ Notes:
 | Joystick: command rotation (analog) | VRX | A0 |
 | Joystick: command forward / backward motion (analog) | VRY | A1 |
 
-<img src="./assets/images/diagram_joystick.png" style="zoom:80%;" />
+![](./assets/images/diagram_joystick.png)
 
 * Analog output of VRX, VRY is in the range 0 - 1023. 
 * Analog input of ENA and ENB in the range 0-255. 
@@ -207,7 +207,7 @@ Highlights of the usage:
 
 
 
-## Status (29/01/23)
+## Prototype status (29/01/23)
 
 * Screen, safe reset/shutdown button and 3D printed camera support
 
@@ -216,6 +216,31 @@ Highlights of the usage:
 <img src="./assets/images/2023.01.29_status_2.jpg" style="zoom:80%;" />
 
 <img src="./assets/images/2023.01.29_status_5.jpg" style="zoom:80%;" />
+
+
+
+## Running motors from the PC (31.01.23)
+
+1. Cloned `ROSArduinoBridge` from https://github.com/joshnewans/ros_arduino_bridge.git to `./code/arduino/` and removed the `.git` folder to disconnect it from original repo
+2. Uploaded software to the Arduino
+3. Rewired Arduino:
+
+![](./assets/images/diagram_bridge.png)
+
+4. Run `miniterm` to test it (`-e` for interactive and specify the baud rate or it won't work at 9600):
+
+```bash
+(RPi):$ $ miniterm -e /dev/ttyUSB0 57600
+--- Miniterm on /dev/ttyUSB0  57600,8,N,1 ---
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+o 150 150
+OK
+o -200 200
+OK
+--- exit ---
+```
+
+
 
 ## To do
 
