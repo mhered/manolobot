@@ -21,7 +21,7 @@
 | 1    | [Chassis](./BOM/chassis.md)                               | ![](./assets/images/storage_box.png)                         | Based on a 29 x 19 x 12.4 cm Keeeper Hubert + Hilda plastic storage box with tray, used for the chassis of the robot. I purchased mine in the local Leroy Merlin. | [Amazon](https://www.amazon.de/keeeper-Hubert-Hilda-Storage-Transparent/dp/B092JKYLW5?ref_=ast_sto_dp) | 8,63€         |
 | 1    | [Battery](./BOM/battery.md)                               | ![](./assets/images/HRB_battery.png)                         | HRB Battery RC LiPo 5000mAh 11.1V 3S 50C XT60 Connector with 4 adapter parts. 308 g. | [Amazon](https://www.amazon.es/gp/product/B086JP7PCC/)       | 35,99€        |
 | 1    | Balance charger                                           | ![](./assets/images/balance_charger.png)                     | WANGCL IMAX B6AC Lipo Battery charger B6 80W Digital LCD Lipo Cargador  11-18V con adaptador para plomo ácido NI-CD/NI-MH 1-6S LI-PO | [Amazon](https://www.amazon.es/gp/product/B0B3GM8KX9/)       | 42,99€        |
-| 1    | [Mega4 USB Hub](.BOM/mega4.md)                            | ![](./BOM/assets/images/mega4.jpg)                           | UUGEAR MEGA4: 4-Port USB 3.1 PPPS Hub for Raspberry Pi 4B    | [The Pi Hut](https://thepihut.com/products/mega4-4-port-usb-3-1-ppps-hub-for-raspberry-pi-4) | £29,00        |
+| 1    | [Mega4 USB Hub](./BOM/mega4.md)                           | ![](./BOM/assets/images/mega4.jpg)                           | UUGEAR MEGA4: 4-Port USB 3.1 PPPS Hub for Raspberry Pi 4B    | [The Pi Hut](https://thepihut.com/products/mega4-4-port-usb-3-1-ppps-hub-for-raspberry-pi-4) | £29,00        |
 
 ## First prototype (20/11/22)
 
@@ -38,7 +38,7 @@
 
 <img src="./assets/images/prototype_diagram.png" alt="prototype_diagram" style="zoom: 67%;" />
 
-![first_prototype](./assets/images/2022.11.20_first_prototype.jpeg)
+<img src="./assets/images/2022.11.20_first_prototype.jpeg" alt="first_prototype" style="zoom:80%;" />
 
 ### Shutting down
 
@@ -48,9 +48,7 @@ Before switching off the power supply, SSH into the RPi to shut it down:
 (RPi) $ sudo shutdown -h now
 ```
 
-### Powering the adafruit USB hub
-
-https://forums.adafruit.com/viewtopic.php?p=930206&hilit=external+power+usb+hub#p930206
+Note: Powering the adafruit USB hub https://forums.adafruit.com/viewtopic.php?p=930206&hilit=external+power+usb+hub#p930206
 
 ## Prototype status (4/12/22)
 
@@ -66,9 +64,9 @@ https://forums.adafruit.com/viewtopic.php?p=930206&hilit=external+power+usb+hub#
 * installed flat HDMI cable, USB-C pigtail
 * discarded USB hub (not needed)
 
-![](./assets/images/diagram.png)
+<img src="./assets/images/diagram.png" style="zoom:80%;" />
 
-![](./assets/images/2022.12.28_status_manolobot.jpeg)
+<img src="./assets/images/2022.12.28_status_manolobot.jpeg" style="zoom:80%;" />
 
 ## Controlling the motors with a joystick (4/1/23)
 
@@ -93,7 +91,7 @@ Notes:
 | Joystick: command rotation (analog) | VRX | A0 |
 | Joystick: command forward / backward motion (analog) | VRY | A1 |
 
-![](./assets/images/diagram_joystick.png)
+<img src="./assets/images/diagram_joystick.png" style="zoom:80%;" />
 
 * Analog output of VRX, VRY is in the range 0 - 1023. 
 * Analog input of ENA and ENB in the range 0-255. 
@@ -174,29 +172,50 @@ Highlights of the usage:
 ## Chassis (7/1/23)
 
 * First test on the chassis
-![](./assets/images/2023.01.07_1st_test_on_chassis.jpeg)
+
+<img src="./assets/images/2023.01.07_1st_test_on_chassis.jpeg" style="zoom:80%;" />
+
+  
 
 * All aboard! - including the rubber duckie
-![](./assets/images/2023.01.07_all_aboard.jpeg)
+
+<img src="./assets/images/2023.01.07_all_aboard.jpeg" style="zoom:80%;" />
 
 ## Details (12/1/23)
 
 * Adding details: casters, grommets, a switch...
-![](./assets/images/2023.01.12_mechanical_assy.jpeg)
+
+<img src="./assets/images/2023.01.12_mechanical_assy.jpeg" style="zoom:80%;" />
+
+  
 
 * All the electronics back in
-![](./assets/images/2023.01.12_electronics_in.jpeg)
+
+<img src="./assets/images/2023.01.12_electronics_in.jpeg" style="zoom:80%;" />
 
 ## Order in the house (17/1/23)
 
 * Some order inside the chassis:
-![](./assets/images/2023.01.17_order_in_the_house.jpeg)
+
+<img src="./assets/images/2023.01.17_order_in_the_house.jpeg" style="zoom:80%;" />
 
 ## Selfie  (21/1/23)
 
-A selfie to celebrate that the camera onboard the `manolobot_uno ` is broadcasting!
+* A selfie to celebrate that the camera onboard the `manolobot_uno ` is broadcasting!
 
-![](./assets/images/selfie.png)
+<img src="./assets/images/selfie.png" style="zoom:80%;" />
+
+
+
+## Status (29/01/23)
+
+* Screen, safe reset/shutdown button and 3D printed camera support
+
+<img src="./assets/images/2023.01.29_status_3.jpg" style="zoom:80%;" />
+
+<img src="./assets/images/2023.01.29_status_2.jpg" style="zoom:80%;" />
+
+<img src="./assets/images/2023.01.29_status_5.jpg" style="zoom:80%;" />
 
 ## To do
 
@@ -205,11 +224,11 @@ A selfie to celebrate that the camera onboard the `manolobot_uno ` is broadcasti
 - [x] configure and test camera
 - [x] configure and test lidar
 - [x] purchase and install battery
-- [ ] soft powerdown button
-- [ ] USB hub
+- [x] soft powerdown button
+- [x] USB hub
+- [x] solve issues with screen
+- [x] 3D printed parts
 - [ ] connect and test encoders
 - [ ] command motor through ROS 
-- [ ] 3D printed parts
 - [ ] improve layout of components inside chassis
-- [ ] solve issues with screen 
 - [ ] configure face in screen

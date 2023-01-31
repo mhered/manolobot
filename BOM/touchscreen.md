@@ -66,3 +66,42 @@ EndSection
 ```
 
 Reboot with `$ sudo reboot`
+
+## Flip screen
+
+To flip the screen run:
+
+```bash
+(RPi):$ DISPLAY=:0 xrandr --output HDMI-1 --rotate inverted
+```
+
+This only works if you are already logged in in the robot GUI, otherwise it throws an error `Invalid MIT-MAGIC-COOKIE-1 key` therefore I enabled autologin (cfr. https://techpiezo.com/linux/enable-or-disable-automatic-login-in-ubuntu-20-04/):
+
+1. The display manager is `lightdm` (to find out, run `(RPI):$ systemctl status display-manager`)
+
+2. Edit the config file with `(RPi):$ sudo nano /etc/lightdm/lightdm.conf` and append:
+
+```
+[Seat:*]
+autologin-user=mhered
+autologin-user-timeout=0
+```
+
+3. reboot
+
+To flip also the touch input:
+
+```bash
+(RPi):$ DISPLAY=:0 xinput set-prop "WaveShare ws170120" --type=float "Coordinate Transformation Matrix" -1 0 1 0 -1 1 0 0 1
+```
+
+To run both automatically at startup run `(RPi):$ sudo nano /etc/xdg/autostart/setscreen.desktop`  and add the following lines:
+
+```
+[Desktop Entry]
+Name=Set Screen Rotation
+Exec=/bin/bash -c 'sleep 10 && xrandr -o inverted && xinput set-prop "WaveShare ws170120" --type=float "Coordinate Transformation Matrix" -1 0 1 0 -1 1 0 0 1'
+Type=Application
+```
+
+This waits 10s after login, then executes. 
