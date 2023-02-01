@@ -263,8 +263,8 @@ Wiring:
 | ------------------------------------------------------------ | ------ | ------ |
 | Motor A (Left) , power + (can be reversed with Red to move motor forward and reverse) | Motor A (Left) , Red | L298, OUT1 |
 | Motor A (Left), Encoder power - (Voltage range 3.3-5V. Positive and negative can not be connected incorrectly) | Motor A (Left) , Black | Arduino, GND |
-| Motor A (Left), Encoder A phase signal feedback (11 signals per turn of the motor) | Motor A (Left) , Yellow | Arduino, D2 |
-| Motor A (Left), Encoder B phase signal feedback (11 signals per turn of the motor) | Motor A (Left) , Green | Arduino, D3 |
+| Motor A (Left), Encoder A phase signal feedback (11 signals per turn of the motor) | Motor A (Left) , Yellow | Arduino, D3 |
+| Motor A (Left), Encoder B phase signal feedback (11 signals per turn of the motor) | Motor A (Left) , Green | Arduino, D2 |
 | Motor A (Left), Encoder power supply + (Voltage range 3.3-5V. Positive and negative can not be connected incorrectly) | Motor A (Left) , Blue | Arduino, 5V |
 | Motor A (Left), power - (can be reversed with Red to move motor forward and reverse) | Motor A (Left) , White | L298, OUT2 |
 | Motor B (Right), power + (can be reversed with Red to move motor forward and reverse) | Motor B (Right), Red | L298, OUT4 |
@@ -272,11 +272,11 @@ Wiring:
 | Motor B (Right), Encoder A phase signal feedback (11 signals per turn of the motor) | Motor B (Right), Yellow | Arduino, A4 |
 | Motor B (Right), Encoder B phase signal feedback (11 signals per turn of the motor) | Motor B (Right), Green | Arduino, A5 |
 | Motor B (Right), Encoder power supply + (Voltage range 3.3-5V. Positive and negative can not be connected incorrectly) | Motor B (Right), Blue | Arduino, 5V |
-| Motor B (Right), power - (can be reversed with Red to move motor forward and reverse) | Motor B (Right), White | L298, OUT3 |
-| Motor A (Left) direction      | L298, IN1 | Arduino, D10 |
-| Motor A (Left) direction      | L298, IN2 | Arduino, D6 |
-| Motor B (Right) direction      | L298, IN3 | Arduino, D9 |
-| Motor B (Right) direction      | L298, IN4 | Arduino, D5 |
+| Motor B (Right), power - (can be reversed with Red to move motor forward and reverse)e | Motor B (Right), White | L298, OUT3 |
+| Motor A (Left) direction      | L298, IN1, Green | Arduino, D10 |
+| Motor A (Left) direction      | L298, IN2, Yellow | Arduino, D6 |
+| Motor B (Right) direction      | L298, IN3, Orange | Arduino, D9 |
+| Motor B (Right) direction      | L298, IN4, Red | Arduino, D5 |
 
 
 ## To do
@@ -290,7 +290,7 @@ Wiring:
 - [x] USB hub
 - [x] solve issues with screen
 - [x] 3D printed parts
-- [ ] connect and test encoders
+- [x] connect and test encoders
 - [ ] command motor through ROS 
 - [ ] improve layout of components inside chassis
 - [ ] configure face in screen
