@@ -8,21 +8,20 @@ joy_node:
 
 teleop_node:
   ros__parameters:
-    
-    axis_linear:  # Left thumb stick vertical
-      x: 1
-    scale_linear:
-      x: 0.5
+    axis_linear:  
+      x: 1      # Left thumb stick vertical
+    scale_linear: 
+      x: 0.5    # regular speed 0.5 m/s
     scale_linear_turbo:
-      x: 1.0
+      x: 1.0    # turbo speed 1 m/s
 
-    axis_angular:  # Left thumb stick horizontal
-      yaw: 0
-    scale_angular:
-      yaw: 0.5
-    scale_angular_turbo:
-      yaw: 1.0
+    axis_angular:  
+      yaw: 0    # Left thumb stick horizontal
+    scale_angular: 
+      yaw: 0.5  # regular speed 0.5rad/s
+    scale_angular_turbo: 
+      yaw: 1.0  # turbo speed 1rad/s
 
     require_enable_button: true
-    enable_button: 4  # Left shoulder button
-    enable_turbo_button: 5  # Right shoulder button
+    enable_button: 4  # Left shoulder button: dead man switch for regular speed
+    enable_turbo_button: 5  # Right shoulder button: dead man switch for turbo speed
