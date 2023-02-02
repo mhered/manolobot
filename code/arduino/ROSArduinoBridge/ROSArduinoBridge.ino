@@ -114,7 +114,7 @@
 
   /* Stop the robot if it hasn't received a movement command
    in this number of milliseconds */
-  #define AUTO_STOP_INTERVAL 4000
+  #define AUTO_STOP_INTERVAL 2000
   long lastMotorCommand = AUTO_STOP_INTERVAL;
 #endif
 
