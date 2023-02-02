@@ -278,6 +278,92 @@ Wiring:
 | Motor B (Right) direction      | L298, IN3, Orange | Arduino, D9 |
 | Motor B (Right) direction      | L298, IN4, Red | Arduino, D5 |
 
+## Calibration
+
+`encoder_cpr` empirically estimated as 1975 encoder counts / revolution
+
+`loop_rate` (or `PID_RATE`) is set to 30 Hz (PID loops/s)
+
+To set a wheel speed of R rev/s we send to the closed loop a command in counts per PID loop so: 
+
+(R rev/s) * (1975 counts/rev) /(30 PID loops/s) = 1975/30R counts/PID loop = 66 R counts/PID loop
+
+i.e. to rotate both wheels forward at 1 rev/s: `m 66 66`
+
+to rotate both wheels backwards at 2 rev/s: `m 132 132`
+
+etc
+
+## Teleoperation
+
+Teleoperation is about sending command signals to the robot, and receiving sensor feedback from the robot.
+
+Roadmap:
+
+- Demo GUI ROS node
+- `teleop_twist_keyboard` with `ros2_control`
+- teleop with a gamepad
+- teleop with a phone
+
+### Demo GUI ROS node
+
+1. In the RPi clone the repo and symlink to src, build and source:
+
+```bash
+(RPi): $ cd ~/git/ && git clone https://github.com/joshnewans/serial_motor_demo.git
+(RPi): $ ln -s ~/git/serial_motor_demo/ ~/dev_ws/src/
+(RPi): $ colcon build --symlink-install
+(RPi): $ cd ~/dev_ws/
+(RPi): $ source install/setup.bash
+```
+
+2. Run the driver node in the RPi:
+
+```bash
+(RPI):$ ros2 run serial_motor_demo driver --ros-args -p serial_port:=/dev/ttyUSB0 -p baud_rate:=57600 -p loop_rate:=30 -p encoder_cpr:=1975
+Connecting to port /dev/ttyUSB0 at 57600.
+Connected to Serial<id=0xffff80b8ec40, open=True>(port='/dev/ttyUSB0', baudrate=57600, bytesize=8, parity='N', stopbits=1, timeout=1.0, xonxoff=False, rtscts=False, dsrdtr=False)
+Error: Serial timeout on command: e
+
+```
+
+3. Repeat the process in the PC and run the GUI:
+
+```bash
+(PC): $ cd ~/git/ && git clone https://github.com/joshnewans/serial_motor_demo.git
+(PC): $ ln -s ~/git/serial_motor_demo/ ~/dev_ws/src/
+(PC): $ colcon build --symlink-install
+(PC): $ cd ~/dev_ws/
+(PC): $ source install/setup.bash
+
+(PC):$ ros2 run serial_motor_demo gui
+```
+
+![](./assets/images/serial_motor_gui.png)
+
+### Teleop with the keyboard (`teleop_twist_keyboard` and `ros2_control`)
+
+cfr:
+
+* https://articulatedrobotics.xyz/mobile-robot-12-ros2-control/
+
+* https://articulatedrobotics.xyz/mobile-robot-12a-ros2-control-extra/
+
+* https://articulatedrobotics.xyz/mobile-robot-13-ros2-control-real/
+
+### Teleop with a gamepad
+
+See details in [./BOM/gamepad.md](./BOM/gamepad.md)
+
+It is possible to connect a gamepad to the PC and fwd the commands to the robot (easier to setup for both simulated and real robot) or directly connect it to the robot (lower latency and better perfo). Can also set up both.
+
+A `joy_node` node talks to the joystick driver and publishes `/joy` messages with the commands
+
+Other nodes subscribe and take actions. In particular `teleop_twist_joy` calculates and publishes `Twist` messages with velocities to `/cmd_vel` topic.
+
+### Teleop with a phone
+
+
 
 ## To do
 
@@ -291,6 +377,7 @@ Wiring:
 - [x] solve issues with screen
 - [x] 3D printed parts
 - [x] connect and test encoders
-- [ ] command motor through ROS 
+- [x] command motor through ROS 
+- [ ] `ros2_control`
 - [ ] improve layout of components inside chassis
 - [ ] configure face in screen
