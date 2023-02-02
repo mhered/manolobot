@@ -148,7 +148,7 @@ Joystick Device ID : Joystick Device Name
 
 Created `./launch/joystick.launch` - which simply specifies the path to the parameter file, declares a `joy_node` node that uses the params file and launches it. Created also a parameter file `./config/joystick.yaml` with default parameters
 
-After source and build, you can launch the fileas follow to achieve the same effect as `ros2 run joy joy_node`:
+After source and build, you can launch the file as follows to achieve the same effect as `ros2 run joy joy_node`:
 
 ```bash
 $ ros2 launch manolobot_uno joystick.launch.py
