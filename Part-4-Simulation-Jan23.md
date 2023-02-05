@@ -81,7 +81,7 @@ $ colcon build --symlink-install
 
 To save the state of RVIZ: Save as... in `./config/view_bot.rviz` then open rviz with the rviz file as parameter:
 
-```
+```bash
 $ rviz2 -d dev_ws/src/manolobot_uno/config/view_bot.rviz
 ```
 

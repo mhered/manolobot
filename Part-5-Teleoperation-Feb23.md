@@ -47,15 +47,9 @@ Error: Serial timeout on command: e
 
 ## Teleop with the keyboard (`teleop_twist_keyboard` and `ros2_control`)
 
-cfr:
+cfr: https://articulatedrobotics.xyz/mobile-robot-12-ros2-control/
 
-* https://articulatedrobotics.xyz/mobile-robot-12-ros2-control/
-
-* https://articulatedrobotics.xyz/mobile-robot-12a-ros2-control-extra/
-
-* https://articulatedrobotics.xyz/mobile-robot-13-ros2-control-real/
-
-
+cfr: https://control.ros.org/master/index.html
 
 Using ROS topics is not fast enough
 
@@ -99,6 +93,57 @@ We set up the controllers through a YAML file that sets parameters
 We can have several controllers provided they are not trying to command the same interfaces, but they can share state interfaces (read only)
 
 Controllers do not need to actually control anything, can be used e.g. just to read a state interface and publish it to a ROS topic
+
+### In practice (with gazebo)
+
+1. Install packages:
+
+```bash
+(PC):$ sudo apt install ros-foxy-ros2-control ros-foxy-ros2-controllers ros-foxy-gazebo-ros2-control
+```
+
+2. update URDF file `./manolobot_uno/description/robot.urdf.xacro` to call `ros2_control.xacro` instead of `gazebo_control.xacro`
+3. Create [`./manolobot_uno/description/ros2_control.xacro`](./manolobot_uno/description/ros2_control.xacro) and YAML parameter file `./manolobot_uno/config/my_controllers.yaml`
+4. build and source
+5. run with:
+
+```bash
+(PC):$ ros2 launch manolobot_uno launch_sim.launch.py world:=./src/manolobot_uno/worlds/cones.world
+```
+
+6. Check hardware interfaces are working with:
+
+```bash
+(PC):$ ros2 control list_hardware_interfaces
+command interfaces
+	left_wheel_joint/velocity [unclaimed]
+	right_wheel_joint/velocity [unclaimed]
+state interfaces
+	 left_wheel_joint/position
+	 left_wheel_joint/velocity
+	 right_wheel_joint/position
+	 right_wheel_joint/velocity
+```
+
+7. start controllers with the `spawner.py` script which will later on work nicely for a launch file
+
+```bash
+(PC):$ ros2 run controller_manager spawner.py diff_cont
+```
+
+8. To run `teleop_twist_keyboard` we need to remap `/cmd_vel` to  `/diff_cont/cmd_vel_unstamped` which is what the controller expects:
+
+```bash
+(PC):$ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
+```
+
+## In practice (in the actual robot)
+
+cfr: https://articulatedrobotics.xyz/mobile-robot-12a-ros2-control-extra/
+
+cfr: https://articulatedrobotics.xyz/mobile-robot-13-ros2-control-real/
+
+
 
 ## Teleop with a gamepad
 

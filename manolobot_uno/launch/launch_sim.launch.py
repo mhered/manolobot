@@ -36,11 +36,25 @@ def generate_launch_description():
                                    '-entity', 'manolobot_uno'],
                         output='screen')
 
+    # Run the controller manager
+    diff_drive_spawner = Node(
+        package="controller_manager",
+        executable="spawner.py",
+        arguments=["diff_cont"],
+    )
 
+    # Run the joint state broadcaster
+    joint_broad_spawner = Node(
+        package="controller_manager",
+        executable="spawner.py",
+        arguments=["joint_broad"],
+    )
 
     # Launch them all
     return LaunchDescription([
         rsp,
         gazebo,
         spawn_entity,
+        diff_drive_spawner,
+        joint_broad_spawner,
     ])

@@ -8,7 +8,10 @@
     <xacro:include filename="robot_core.xacro" />
 
     <!-- GAZEBO -->
-    <xacro:include filename="gazebo_control.xacro" />
+    <!-- <xacro:include filename="gazebo_control.xacro" /> -->
+    
+    <!-- ROS2 CONTROL -->
+    <xacro:include filename="ros2_control.xacro" />
 
     <!-- LIDAR -->
     <xacro:include filename="lidar.xacro" />
