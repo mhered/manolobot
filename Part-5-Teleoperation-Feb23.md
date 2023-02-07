@@ -149,7 +149,9 @@ Robot movement is choppy because clock rate in Gazebo is too slow (10Hz). Increa
 
 Replace wheel collision model for spheres
 
+#### Add parameter to toggle between `gazebo_control` and `ros2_control`
 
+Because `ros2_control` shows misbehavior at higher speeds (?)
 
 ### In practice (in the actual robot)
 
