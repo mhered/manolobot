@@ -53,7 +53,7 @@ cfr: https://control.ros.org/master/index.html
 
 Using ROS topics is not fast enough
 
-`ros2_control` is faster and allows writing modular reusable code
+`ros2_control` is faster (loads libraries) and allows writing modular reusable code
 
 ![](./assets/images/ros2_control_diagram.png)
 
@@ -137,9 +137,21 @@ state interfaces
 (PC):$ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
 ```
 
-## In practice (in the actual robot)
+### In practice (fixing details)
 
 cfr: https://articulatedrobotics.xyz/mobile-robot-12a-ros2-control-extra/
+
+#### Increasing gazebo clock rate
+
+Robot movement is choppy because clock rate in Gazebo is too slow (10Hz). Increased to 400Hz because why not
+
+#### Reducing wheel drift
+
+Replace wheel collision model for spheres
+
+
+
+### In practice (in the actual robot)
 
 cfr: https://articulatedrobotics.xyz/mobile-robot-13-ros2-control-real/
 

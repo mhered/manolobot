@@ -68,7 +68,7 @@
 
         <collision>
             <geometry>
-                <cylinder radius="${W_D/2}" length="${W_h}" />
+                <sphere radius="${W_D/2}" />
             </geometry>
         </collision>
 
@@ -101,7 +101,7 @@
 
         <collision>
             <geometry>
-                <cylinder radius="${W_D/2}" length="${W_h}" />
+                <sphere radius="${W_D/2}" />
             </geometry>
         </collision> 
 
