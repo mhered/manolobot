@@ -7,12 +7,17 @@ from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
+from launch.substitutions import LaunchConfiguration
+from launch.actions import DeclareLaunchArgument
+
 from launch_ros.actions import Node
 
 
 
 def generate_launch_description():
 
+    # Check parameter to toggle use of ros2_control
+    use_ros2_control = LaunchConfiguration('use_ros2_control')
 
     # Include the robot_state_publisher launch file. Force sim time to be enabled
 
@@ -21,17 +26,17 @@ def generate_launch_description():
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','rsp.launch.py'
-                )]), launch_arguments={'use_sim_time': 'true', 'use_ros2_control': 'true'}.items()
+                )]), launch_arguments={'use_sim_time': 'true', 'use_ros2_control': use_ros2_control}.items()
     )
 
-
-    gazebo_params_file = os.path.join(get_package_share_directory(package_name),'config','gazebo_params.yaml')
+    gazebo_params_path = os.path.join(
+        get_package_share_directory(package_name),'config','gazebo_params.yaml')
     
     # Include the Gazebo launch file, provided by the gazebo_ros package
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
-                    launch_arguments={'extra_gazebo_args': '--ros-args --params-file '+ gazebo_params_file}.items()
+                    launch_arguments={'extra_gazebo_args': '--ros-args --params-file ' + gazebo_params_path }.items()
     )
 
     # Run the spawner node from the gazebo_ros package. The entity name doesn't really matter if you only have a single robot.
@@ -56,6 +61,10 @@ def generate_launch_description():
 
     # Launch them all
     return LaunchDescription([
+        DeclareLaunchArgument(
+            'use_ros2_control',
+            default_value='true',
+            description='Use ros2_control if true'),
         rsp,
         gazebo,
         spawn_entity,

@@ -141,17 +141,29 @@ state interfaces
 
 cfr: https://articulatedrobotics.xyz/mobile-robot-12a-ros2-control-extra/
 
-#### Increasing gazebo clock rate
+#### Increase gazebo clock rate
 
-Robot movement is choppy because clock rate in Gazebo is too slow (10Hz). Increased to 400Hz because why not
+Robot movement is choppy because clock rate in Gazebo is too slow (10Hz). Increased to 400Hz because why not.
 
-#### Reducing wheel drift
+**Note:** After implementing the fix to increase gazebo clock rate, I get the following error message when running gazebo - even though it otherwise  seems to be working fine:
+
+```
+...
+[gzserver-2] Error [parser.cc:403] Error parsing XML in file [/home/mhered/dev_ws/install/manolobot_uno/share/manolobot_uno/config/gazebo_params.yaml]: Error document empty.
+...
+```
+
+If appears it is trying to interpret the `gazebo_params.yaml` file as XML and failing.
+
+#### Reduce wheel drift
 
 Replace wheel collision model for spheres
 
 #### Add parameter to toggle between `gazebo_control` and `ros2_control`
 
 Because `ros2_control` shows misbehavior at higher speeds (?)
+
+- [x] To Do: add toggle at runtime, i.e. `$ ros2 launch my_package launch_sim.launch.py use_ros2_control:=false`
 
 ### In practice (in the actual robot)
 
