@@ -169,7 +169,29 @@ Because `ros2_control` shows misbehavior at higher speeds (?)
 
 cfr: https://articulatedrobotics.xyz/mobile-robot-13-ros2-control-real/
 
+We want to link the command velocity (`Twist` or `TwistStamped` messages from a gamepad or Nav2 or whatever) with the actual motors in the robot.
 
+In our case:
+
+* we use the `diff_drive_controller` controller plugin to convert command velocities into required wheel velocities. 
+* we need to write a hardware interface plugin or clone `diffdrive_arduino` by Josh Newans - this converts required wheel velocities into motor hardware commands
+* The controller manager (`ros2_control_node`) links the two plugins.
+* Joint State Broadcaster reads wheel encoder positions and publishes to `/joint_states`so the Robot State Publisher can publish its TFs.
+
+1. Install the hardware interface plugin (clone and symlink the two repos, install `ros2-control`, and build):
+
+```bash
+(RPi):$ cd ~/git
+(RPi):$ git clone https://github.com/joshnewans/diffdrive_arduino
+(RPi):$ ln -s ~/git/diffdrive_arduino/ ~/dev_ws/src/
+(RPi):$ git clone https://github.com/joshnewans/serial
+(RPi):$ ln -s ~/git/serial/ ~/dev_ws/src
+(RPi):$ sudo apt install ros-foxy-ros2-control ros-foxy-ros2-controllers
+(RPi):$ cd ~/dev_ws
+(RPi):$ colcon build --symlink-install
+```
+
+2. Configure it: first, update the URDF file `ros2_control.xacro` so it loads the hardware interface plugin `diffdrive_arduino/DiffDriveArduino` and define all the parameters. Next, create `launch_robot.launch.py` and replace the call to gazebo controller for the `controller_manager` node passing as parameters the URDF in `robot_description` and with the controller plugins in `my_controllers.yaml`. Then,  remove the use of sim time in `launch_robot.launch.py`, and `my_controller_params.yaml` . Finally, delay the launch of `controller_manager`, `diff_drive` and `joint_broad`.
 
 ## Teleop with a gamepad
 
