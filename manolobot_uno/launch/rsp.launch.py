@@ -12,25 +12,28 @@ import xacro
 
 def generate_launch_description():
 
-    # Check parameters to toggle use of sim time and ros2_control
+    package_name = 'manolobot_uno'
+
+    # Check parameters that toggle use of sim time and ros2_control
     use_sim_time = LaunchConfiguration('use_sim_time')
     use_ros2_control = LaunchConfiguration('use_ros2_control')
 
     # Process the URDF file
-    pkg_path = os.path.join(get_package_share_directory('manolobot_uno'))
-    xacro_file = os.path.join(pkg_path,'description','robot.urdf.xacro')
-    # robot_description_config = xacro.process_file(xacro_file).toxml()
-    robot_description_config = Command(['xacro ', xacro_file, ' use_ros2_control:=',use_ros2_control])
+    xacro_file_path = os.path.join(get_package_share_directory(package_name),'description','robot.urdf.xacro')
+
+    robot_description_config = Command(['xacro ', xacro_file_path, ' use_ros2_control:=',use_ros2_control])
 
     # Create a robot_state_publisher node
-    params = {'robot_description': robot_description_config, 'use_sim_time': use_sim_time}
+    params = {
+        'robot_description': robot_description_config, 
+        'use_sim_time': use_sim_time,
+    }
     node_robot_state_publisher = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
-        output='screen',
-        parameters=[params]
-    )
-
+            package='robot_state_publisher',
+            executable='robot_state_publisher',
+            output='screen',
+            parameters=[params]
+        )
 
     # Launch
     return LaunchDescription([

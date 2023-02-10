@@ -21,31 +21,40 @@ def generate_launch_description():
 
     package_name='manolobot_uno'
 
-    # Include the robot_state_publisher launch file. Force sim time to be disabled
+    # Include the robot_state_publisher launch file 
+    # Disabling use of sim time and enabling ros2_control
+
+
+    rsp_launch_file_path = os.path.join(
+            get_package_share_directory(package_name),'launch','rsp.launch.py'
+        )
+
     rsp = IncludeLaunchDescription(
-                PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory(package_name),'launch','rsp.launch.py'
-                )]), launch_arguments={'use_sim_time': 'false', 'use_ros2_control': 'true'}.items()
+                PythonLaunchDescriptionSource([rsp_launch_file_path]), 
+                launch_arguments={
+                        'use_sim_time': 'false', 
+                        'use_ros2_control': 'true'
+                    }.items()
     )
 
 
+    # Run the controller manager
     
+    # read robot description from URDF to obtain hardware interfaces
     robot_description = Command(['ros2 param get --hide-type /robot_state_publisher robot_description'])
-
-    controller_params_file = os.path.join(
+    
+    # YAML file with controllers
+    controller_params_file_path = os.path.join(
         get_package_share_directory(package_name),
         'config',
         'my_controllers.yaml'
     )
 
-
-
-    # Run the controller manager
     controller_manager = Node(
         package="controller_manager",
         executable="ros2_control_node",
         parameters=[{'robot_description': robot_description},
-                    controller_params_file],
+                    controller_params_file_path],
     )
 
     delayed_controller_manager = TimerAction(
@@ -53,7 +62,7 @@ def generate_launch_description():
         actions=[controller_manager]
         )
     
-    # Run the controller manager
+    # Run the differential drive controller
     diff_drive_spawner = Node(
         package="controller_manager",
         executable="spawner.py",
