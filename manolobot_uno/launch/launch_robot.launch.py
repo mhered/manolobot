@@ -76,7 +76,6 @@ def generate_launch_description():
         )
     )
 
-
     # Run the joint state broadcaster
     joint_broad_spawner = Node(
         package="controller_manager",
