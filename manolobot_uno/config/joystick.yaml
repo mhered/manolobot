@@ -18,9 +18,9 @@ teleop_node:
     axis_angular:  
       yaw: 0    # Left thumb stick horizontal
     scale_angular: 
-      yaw: 0.5  # regular speed 0.5rad/s
+      yaw: 1.0  # regular speed 1 rad/s
     scale_angular_turbo: 
-      yaw: 1.0  # turbo speed 1rad/s
+      yaw: 2.0  # turbo speed 2 rad/s
 
     require_enable_button: true
     enable_button: 4  # Left shoulder button: dead man switch for regular speed
