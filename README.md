@@ -10,3 +10,4 @@ This project is inspired in the phenomenal series of blog and video tutorials [A
 * [Part 4](Part-4-Simulation-Jan23.md): Notes on simulating the robot **manolobot_uno**
 * [Part 5](Part-5-Teleoperation-Feb23.md): Notes on teleoperation for **manolobot_uno**
 
+Go straight for the [Quick Start Guide](Quick-start-guide.md) to launch the robot and play with it
