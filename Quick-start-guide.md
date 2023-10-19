@@ -2,7 +2,18 @@
 
 ## Charge the battery
 
-Remember during charging: in the screen with 6 voltages it is normal to see the lower 3 at 0.00 the charger is capable to dealing with 6 cell batteries but my battery has only 3 cells (11.1V)
+Balance charging the LiPo battery using the iMAX B6AC LiPo balance charger:
+
+1.  Plug the charger to mains to power it up
+2. Check that the jacks of the charging cable are correctly connected to the charger (black to negative and red to positive). 
+3.  Connect the XT60 connector of the battery to the charging cable. 
+4.  Insert the JST-XH balance connector of the battery to the designated slot in the balance charger (In our case 3 cells). 
+5.  Use arrows to go to the **Balance Charge** setting.
+6.  Select **LiPo** battery type. 
+7. Confirm settings. For the 5000mAh 11.1V 50C LiPo battery: **Lipo**,  **3.8A** charging current (below 1C) and **11.1V (3S)** configuration. 
+8.  Hold the **Start** button to start. Press it again to confirm. 
+9. During charging: in the screen with 6 voltages it is normal to see the lower three indications static at 0.00. This is because the charger is capable of charging batteries with up to 6 cells, but our battery actually has only three.
+10. The charger has an alarm when charge is complete
 
 ## Switch on the robot
 
