@@ -1,6 +1,8 @@
-# Starting manubot
+# Quick Start Guide
 
-## Charge the battery
+## Start manubot
+
+### Charge the battery
 
 Balance charging the LiPo battery using the iMAX B6AC LiPo balance charger:
 
@@ -13,13 +15,13 @@ Balance charging the LiPo battery using the iMAX B6AC LiPo balance charger:
 7. Confirm settings. For the 5000mAh 11.1V 50C LiPo battery: **Lipo**,  **3.8A** charging current (below 1C) and **11.1V (3S)** configuration. 
 8.  Hold the **Start** button to start. Press it again to confirm. 
 9. During charging: in the screen with 6 voltages it is normal to see the lower three indications static at 0.00. This is because the charger is capable of charging batteries with up to 6 cells, but our battery actually has only three.
-10. The charger has an alarm when charge is complete
+10. The charger alarm will beep when charge is complete
 
-## Switch on the robot
+### Switch on the robot
 
 Red switch on the side from **O** to **I**
 
-## Run ROS in the robot
+### Source ROS2 in the robot
 
 SSH into the robot and source ROS2 workspace:
 
@@ -31,13 +33,13 @@ mhered@192.168.8.105's password:
 (manubot T1)$ source install/setup.bash
 ```
 
-## Spawn the robot
+### Spawn the robot
 
 ```bash
 (manubot T1)$ ros2 launch manolobot_uno launch_robot.launch.py
 ```
 
-## Run ROS commands in PC
+### Source ROS2 in the PC
 
 Source ROS2 workspace in PC:
 
@@ -46,7 +48,7 @@ Source ROS2 workspace in PC:
 (PC T2)$ source install/setup.bash
 ```
 
-## Launch RVIZ with config file
+### Launch RVIZ with config file
 
 Note we use predefined config file but it is not necessary
 
@@ -54,7 +56,9 @@ Note we use predefined config file but it is not necessary
 (PC T2)$ rviz2 -d ~/dev_ws/src/manolobot_uno/config/bot_with_sensors.rviz
 ```
 
-## Teleop with keyboard 
+### Move the robot
+
+#### With keyboard 
 
 Launch keyboard teleop controller in PC:
 
@@ -66,7 +70,7 @@ Note remapping of topic `/cmd_vel` to `/diff_cont/cmd_vel_unstamped`
 
 Now you can move the robot from computer with the keyboard and see it in RVIZ!
 
-## Teleop with a gamepad
+#### With a gamepad
 
 More details in [./BOM/gamepad.md](./BOM/gamepad.md)
 
@@ -88,7 +92,11 @@ Note: the controls are defined in a parameter file which implements:
 - Dead man switches: L button (left shoulder) for normal speed, R button (right shoulder) for turbo
 - Control on left stick: vertical axis for forward/backward motion and horizontal axis for rotation.
 
-## Launch camera controller
+### Sensors
+
+#### Stream camera
+
+SSH to the robot from another Terminal and launch the camera controller:
 
 ```bash
 (manubot T2)$ cd ~/dev_ws/
@@ -108,17 +116,19 @@ It does not show the camera feed in RVIZ as it should... BUT it works with RQT:
 
 It works!
 
-## Launch LIDAR controller
+#### Stream Lidar scans
+
+Launch the LIDAR controller:
 
 ```bash
-(manubot T2)$ cd ~/dev_ws/
-(manubot T2)$ source install/setup.bash
-(manubot T2)$ ros2 launch ldlidar_stl_ros2 ld06.launch.py 
+(manubot T3)$ cd ~/dev_ws/
+(manubot T3)$ source install/setup.bash
+(manubot T3)$ ros2 launch ldlidar_stl_ros2 ld06.launch.py 
 ```
 
 It works!
 
-# Power off manubot
+## Power off manubot
 
 Safe reset and shutdown: the blue button.
 
@@ -129,3 +139,11 @@ Safe reset and shutdown: the blue button.
 After Lidar powers off (means RPi powered off) switch off mains red button
 
 See implementation in file `safe_shutdown.py` in: [](/home/mhered/manolobot/code/button/) 
+
+## To Do
+
+- [ ] add photos / video of battery charging
+- [ ] fix issue with camera in RVIZ
+- [ ] make power down more usable (remove short press for reset and provide feedback for shutdown)
+- [ ] wheels skid, big time
+- [ ] motors have a lot of hysteresis
