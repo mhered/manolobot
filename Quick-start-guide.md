@@ -6,7 +6,7 @@ Remember during charging: in the screen with 6 voltages it is normal to see the 
 
 ## Switch on the robot
 
-Red switch on the side
+Red switch on the side from **O** to **I**
 
 ## Run ROS in the robot
 
@@ -19,8 +19,6 @@ mhered@192.168.8.105's password:
 (manubot T1)$ cd ~/dev_ws/
 (manubot T1)$ source install/setup.bash
 ```
-
-## 
 
 ## Spawn the robot
 
@@ -45,7 +43,9 @@ Note we use predefined config file but it is not necessary
 (PC T2)$ rviz2 -d ~/dev_ws/src/manolobot_uno/config/bot_with_sensors.rviz
 ```
 
-## Launch keyboard teleop in PC
+## Teleop with keyboard 
+
+Launch keyboard teleop controller in PC:
 
 ```bash
 (PC T3)$ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
@@ -54,6 +54,28 @@ Note we use predefined config file but it is not necessary
 Note remapping of topic `/cmd_vel` to `/diff_cont/cmd_vel_unstamped`
 
 Now you can move the robot from computer with the keyboard and see it in RVIZ!
+
+## Teleop with a gamepad
+
+More details in [./BOM/gamepad.md](./BOM/gamepad.md)
+
+Connect the gamepad in Ubuntu:
+
+* ensure it is charged (or charge with microUSB)
+* to pair press HOME + SHARE (small button labelled 'S' on the left above the cross) until light flashes white (note if you press HOME + 'O' button on the right the white light blinks, not flashes)
+* In Bluetooth settings select Wireless Controller to Connect. Light stops flashing and turns blue
+* You may want to test it works with `$ evtest`
+
+Launch gamepad controller:
+
+```bash
+$ ros2 launch manolobot_uno joystick.launch.py
+```
+
+Note: the controls are defined in a parameter file which implements:
+
+- Dead man switches: L button (left shoulder) for normal speed, R button (right shoulder) for turbo
+- Control on left stick: vertical axis for forward/backward motion and horizontal axis for rotation.
 
 ## Launch camera controller
 
