@@ -162,7 +162,7 @@ $ docker image rm hello-world
 $ docker rmi hello-world
 ```
 
-need `-f`  force modifier needed if ever a container was run from this image:
+need `-f`  force modifier if ever a container was run from this image:
 
 ```bash
 $ docker image rm hello-world
@@ -304,17 +304,45 @@ $ docker run -it -v absolute_path_on_host:absolute_path_on_image image_name
 
 Now we can edit files in the host from the container!!!
 
-The problem is that files created inside docker will be owned by `root` and wil be difficult to handle by the user...
+The problem is that files created inside docker will be owned by `root` and will be difficult to handle by the user...
 
 ## Part 3
 
 See Articulated Robotics video:  https://www.youtube.com/watch?v=RbP5cARP-SM
 
-There are other types of ROS images that support graphics: `ros:humble` is lightweight and OK for command line. Use instead `osrf/ros:humble-desktop-full` to support graphics
+OS identify users by `username` and `UID`. You can see `username` and `group`with `ls -l` and `UID` and `GID` with `ls -ln`:
 
-You can change the user to run commands of the Dockerfile using `USER`. Bear in mind the default user when container is run will be the last one set. Useful e.g. to create files with certain permissions. Good practice to finish always with `USER root`.
+```bash
+$ ls -l
+-rw-r--r-- 1 mhered mhered  0 Oct 25 01:05 another_file.py
+-rw-r--r-- 1 root   root   13 Oct 25 01:39 a_root_file
+$ ls -ln
+-rw-r--r-- 1 1000 1000  0 Oct 25 01:05 another_file.py
+-rw-r--r-- 1    0    0 13 Oct 25 01:39 a_root_file
+```
 
-You can override this defining the user running with the run command. This runs a `ros` (different name but same UID so same user for Linux) and mounts the path as mentioned earlier:
+In ubuntu `root`'s UID is 0 and the default user's UID is 1000.
+
+Groups are ways to give permissions to sets of users. Each user has a group (their primary group).
+
+Often the system cares only about `UID` and `GID` not really `username` and `group`
+
+To create a a non-root user with the same user id as the host user, add to the docker file: 
+
+```bash
+RUN groupadd --gid $USER_GID $USERNAME \
+	&& useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
+	&& mkdir /home/$USERNAME/.config \
+	&& chown $USER_UID:$USER_GID /home/$USERNAME/.config
+```
+
+
+
+You can change the user to run different commands of the Dockerfile using `USER`. Useful e.g. to create files with certain permissions. 
+
+The default user when container is run will be the last one set. Good practice to finish always with `USER root`.
+
+You can override the user running when container starts with the `--user`parameter in the run command. E.g. this runs a `ros` (different name but same UID so same user for Linux) and mounts the path as mentioned earlier:
 
 ```bash
 $ docker run -it --user ros -v $PWD/code/:/my_source_code nano_image
@@ -329,9 +357,9 @@ Can identify the user with either one of:
 --user <uid>:<gid>
 ```
 
-Now files created from docker in the mount area will be owned by the default user in the host
+Now files created from docker in the mount area will be owned by the default user in the host.
 
-Note: it is not necessary, but sometimes it is useful to define the username inside ros the same as in the host e.g. if we use paths that contain the username.
+Note: it is not necessary, but sometimes it is useful to define the username inside container the same as in the host e.g. if we use paths that contain the username.
 
 #### Set up `sudo`
 
@@ -386,13 +414,17 @@ $ docker run -it --user ros --network=host --ipc=host -v $PWD/code/:/my_source_c
 Provided arguments: ros2 topic list
 /parameter_events
 /rosout
-$ 
+$
 ```
 
 It starts the container, execute the command and exit 
 This allows to run a program being oblivious to the fact it is running in a container in a different OS and ROS version!!
 
 ## Graphics
+
+ `ros:humble` is a lightweight ROS image, good for command line. 
+
+Use instead `osrf/ros:humble-desktop-full` as base ROS image if you need graphics support.
 
 It is complicated. There are different options for different applications
 
@@ -416,8 +448,6 @@ $ docker run -it --user ros \
 --env=DISPLAY \
 nano_image 
 ```
-
-
 
 Things to try if it does not work:
 
@@ -467,7 +497,7 @@ Passing devices safely may be complex.
 
 On Linux (almost) everything is a file, including (most) devices, i.e. Linux r/w from devices as if they were files. These files live in `/dev` folder
 
-e.g. with `xxd` you this a text output when moving the mouse
+e.g. with `xxd` you get this a text output when moving the mouse
 
 ```bash
 $ sudo xxd /dev/input/mouse2
@@ -495,7 +525,7 @@ $ sudo xxd /dev/input/event15
 ...
 ```
 
-You can access them using a slightly more descriptive links:
+You can access them using slightly more descriptive links:
 
 ```bash
 $ ls -l /dev/input/by-id
@@ -507,15 +537,126 @@ lrwxrwxrwx 1 root root  9 Oct 27 23:34 usb-Logitech_USB_Receiver-if01-mouse -> .
 
 ```
 
+Also we can id the drivers the OS is trying to use to talk to the devices:
+
+```bash
+$ ls -l /dev/input
+total 0
+drwxr-xr-x 2 root root      60 Oct 28 06:50 by-id
+drwxr-xr-x 2 root root     140 Oct 28 06:50 by-path
+crw-rw---- 1 root input 13, 64 Mar 27  2023 event0
+crw-rw---- 1 root input 13, 65 Mar 27  2023 event1
+crw-rw---- 1 root input 13, 74 Mar 27  2023 event10
+crw-rw---- 1 root input 13, 75 Oct 22 21:27 event11
+crw-rw---- 1 root input 13, 76 Mar 27  2023 event12
+crw-rw---- 1 root input 13, 77 Oct 22 21:27 event13
+crw-rw---- 1 root input 13, 81 Oct 28 08:09 event17
+crw-rw---- 1 root input 13, 66 Mar 27  2023 event2
+crw-rw---- 1 root input 13, 67 Mar 27  2023 event3
+crw-rw---- 1 root input 13, 68 Mar 27  2023 event4
+crw-rw---- 1 root input 13, 69 Mar 27  2023 event5
+crw-rw---- 1 root input 13, 70 Mar 27  2023 event6
+crw-rw---- 1 root input 13, 71 Mar 27  2023 event7
+crw-rw---- 1 root input 13, 72 Mar 27  2023 event8
+crw-rw---- 1 root input 13, 73 Mar 27  2023 event9
+crw-rw---- 1 root input 13, 63 Mar 27  2023 mice
+crw-rw---- 1 root input 13, 32 Mar 27  2023 mouse0
+crw-rw---- 1 root input 13, 33 Mar 27  2023 mouse1
+
+```
+
+the numbers `13, 64` in the 3rd line are the major ID (`13` is input devices) and minor driver ID (64 for mouse)
+
+Documentation at: www.kernel.org/doc/Documentation/admin-guide/devices.txt
+
+### Connecting a USB gamepad
+
+In the docker file we use a `RUN` command to install a few programs for device testing: `evtest`, `jstest-gtk` and ` python3-serial ` 
+
+Even if I mount devices the container won't see them. Need to provide extra info that this is a device not a file. If you know your device address and it is fixed we can add to the run command the argument `--device=/dev/input/js0`:
+
+```bash
+$ docker run -it --user ros --network=host --ipc=host -v $PWD/code/:/my_source_code  -v /tmp/.X11-unix:/tmp/.X11-unix:rw --env=DISPLAY --device=/dev/input/js0 nano_image 
+```
+
+This is limited: supports plugging and unplugging BUT is brittle: needs to have the device connected when the container starts, runs, stops and restarts, and will stop working if the address changes. Also this uses the old joy dev driver which does not work with ROS
+
+A better way: tell Docker it is allowed to control devices using certain driver types. Bind mounting `/dev/input` then specify a device C-group rule for input devices (`13`) with read, make node (??) and write options as follows:
+
+```bash
+$ docker run -it --user ros --network=host --ipc=host -v $PWD/code/:/my_source_code  -v /tmp/.X11-unix:/tmp/.X11-unix:rw --env=DISPLAY -v /dev/input/:/dev/input/ --device-cgroup-rule='c 13:* rmw' nano_image 
+```
+
+You could be more general and allow control for all devices with: `-v /dev:/dev --device-cgroup-rule='c *:* rmw' `
+
+### Connecting a camera
+
+List USB devices:
+
+```bash
+$ lsusb
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 004: ID 27c6:6a94 Shenzhen Goodix Technology Co.,Ltd. Goodix USB2.0 MISC
+Bus 003 Device 009: ID 050d:008a Belkin Components 
+Bus 003 Device 007: ID 046d:c534 Logitech, Inc. Unifying Receiver
+Bus 003 Device 010: ID 05e3:0751 Genesys Logic, Inc. microSD Card Reader
+Bus 003 Device 008: ID 2109:0102 VIA Labs, Inc. HD Webcam C525
+Bus 003 Device 006: ID 1a40:0101 Terminus Technology Inc. Hub
+Bus 003 Device 003: ID 2109:2817 VIA Labs, Inc. USB2.0 Hub             
+Bus 003 Device 002: ID 04f2:b6fa Chicony Electronics Co., Ltd LG Camera
+Bus 003 Device 005: ID 8087:0026 Intel Corp. 
+Bus 003 Device 011: ID 046d:0826 Logitech, Inc. HD Webcam C525
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 003: ID 0bda:8153 Realtek Semiconductor Corp. RTL8153 Gigabit Ethernet Adapter
+Bus 002 Device 002: ID 2109:0817 VIA Labs, Inc. USB3.0 Hub             
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+```
+
+List cameras:
+
+```bash
+$ ls -ltrh /dev/video*
+crw-rw----+ 1 root video 81, 1 Mar 27  2023 /dev/video1
+crw-rw----+ 1 root video 81, 0 Mar 27  2023 /dev/video0
+crw-rw----+ 1 root video 81, 3 Dec 15 00:25 /dev/video3
+crw-rw----+ 1 root video 81, 2 Dec 15 00:25 /dev/video2
+```
+
+Tried checking the camera with cheese as described here: https://linuxconfig.org/how-to-test-webcam-on-ubuntu-22-04-jammy-jellyfish but it does not work, see discussion here: https://discourse.articulatedrobotics.xyz/t/discussion-docker-and-devices-docker-for-robotics-pt-4/552/5?u=mhered
+
+I then tried with `guvcview`: see here about installation https://howtoinstall.co/package/guvcview and a tutorial (in Spanish): https://www.youtube.com/watch?v=3-ZoJnqiZIk
+
+In the docker file install with a `RUN` command the following packages: `usbutils` , `guvcview` and `dbus-x11`.
+
+Rebuild the image (from the folder where the dockerfile lives):
+
+```bash
+$ docker image build -t nano_image .
+```
+
+Then run the container with:
+
+```bash
+$ docker run -it --user ros --network=host --ipc=host -v $PWD/code/:/my_source_code:rw  -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v $PWD/data:/my_data:rw --env=DISPLAY --device=/dev/video0 --device=/dev/video1 --device=/dev/video2 --device=/dev/video3 --device=/dev/dri/card0 nano_image
+```
+
+And the camera with
+
+```bash
+(container)$ guvcview -d /dev/video2
+```
 
 
 
+For some reason it was running with `root` not my user, so no permission to write files. but it worked well after rebuilding the image.
 
+#### Notes
 
-
-### Connecting a gamepad
-
-
+* Still several errors present. 
+* `guvcview` insists searching for video0 and video1
+* One of the camera devices (`video3`?) does not work. 
 
 ### Connecting a depth camera
 

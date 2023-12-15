@@ -28,6 +28,22 @@ RUN apt-get update \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
     && rm -rf /var/lib/apt/lists/*
 
+# Install apps for testing various devices
+RUN apt-get update \
+    && apt-get install -y\
+    evtest \
+    jstest-gtk \
+    python3-serial \
+    usbutils \ 
+    guvcview \
+    dbus-x11 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set the display environment variable
+ENV DISPLAY=:0
+
+# Add user to video group
+RUN usermod -aG video $USERNAME 
 
 # Copy entrypoint script into image
 COPY entrypoint.sh /entrypoint.sh
@@ -40,6 +56,8 @@ ENTRYPOINT [ "/bin/bash", "/entrypoint.sh" ]
 
 # Set the default command to bash to have a working terminal
 CMD ["bash"]
+
+
 
 
 # not needed if base is official ROS distro
