@@ -218,7 +218,7 @@ Stream with:
 
 Quit with `x`
 
-Check is `v4l` (video for linux) can see the camera with:
+Check if `v4l` (video for linux) can see the camera with:
 
 ```bash
 (Rpi):$ v4l2-ctl --list-devices
