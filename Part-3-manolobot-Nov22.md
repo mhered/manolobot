@@ -227,9 +227,9 @@ Highlights of the usage:
 
 | Description                                                  | From | To                                          |
 | ------------------------------------------------------------ | ------ | ------ |
-| Motor A (Left) , power + (can be reversed with Red to move motor forward and reverse) | Motor A (Left) , Red | L298, OUT1 |
+| Motor A (Left) , power + (can be reversed with White to move motor forward and reverse) | Motor A (Left) , Red | L298, OUT1 |
 | Motor A (Left), power - (can be reversed with Red to move motor forward and reverse) | Motor A (Left) , White | L298, OUT2 |
-| Motor B (Right), power + (can be reversed with Red to move motor forward and reverse) | Motor B (Right), Red | L298, OUT4 |
+| Motor B (Right), power + (can be reversed with White to move motor forward and reverse) | Motor B (Right), Red | L298, OUT4 |
 | Motor B (Right), power - (can be reversed with Red to move motor forward and reverse) | Motor B (Right), White | L298, OUT3 |
 | Motor A (Left) direction      | L298, IN1 | Arduino, D10 |
 | Motor A (Left) direction      | L298, IN2 | Arduino, D6 |
@@ -280,17 +280,19 @@ Wiring:
 
 ## Calibration
 
+See https://www.youtube.com/watch?v=-PCuDnpgiew
+
 `encoder_cpr` empirically estimated as 1975 encoder counts / revolution
 
 `loop_rate` (or `PID_RATE`) is set to 30 Hz (PID loops/s)
 
 To set a wheel speed of R rev/s we send to the closed loop a command in counts per PID loop so: 
 
-(R rev/s) * (1975 counts/rev) /(30 PID loops/s) = 1975/30R counts/PID loop = 66 R counts/PID loop
+(R rev/s) * (1975 counts/rev) /(30 PID loops/s) = R*1975/30 counts/PID loop = 66 R counts/PID loop
 
 i.e. to rotate both wheels forward at 1 rev/s: `m 66 66`
 
-to rotate both wheels backwards at 2 rev/s: `m 132 132`
+to rotate both wheels backwards at 2 rev/s: `m -132 -132`
 
 etc
 
@@ -307,6 +309,6 @@ etc
 - [x] 3D printed parts
 - [x] connect and test encoders
 - [x] command motor through ROS 
-- [ ] teleoperation with gamepad
+- [x] teleoperation with gamepad
 - [ ] improve layout of components inside chassis
 - [ ] configure face in screen
