@@ -17,7 +17,7 @@
 ### LD06 mount
 * [Minipupper Oak-D-Lite & Lidar mount](https://www.thingiverse.com/thing:5374323)
 * [LDRobot LD06 360 LiDAR Module & Raspberry PI Mounting Bracket](https://grabcad.com/library/ldrobot-ld06-360-lidar-module-raspberry-pi-mounting-bracket-1)
-* [The original LD06 baseplate from my my minipupper repo](https://github.com/mhered/minipupper_fun/tree/main/assets/CAD)
+* [The original LD06 baseplate from my minipupper repo](https://github.com/mhered/minipupper_fun/tree/main/assets/CAD)
 
 ### Pi camera mount
 * [BEST Micro Apex GO PRO Mount](https://www.thingiverse.com/thing:4890862)
