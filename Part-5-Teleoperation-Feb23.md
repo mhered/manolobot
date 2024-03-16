@@ -16,8 +16,8 @@ Roadmap:
 ```bash
 (RPi): $ cd ~/git/ && git clone https://github.com/joshnewans/serial_motor_demo.git
 (RPi): $ ln -s ~/git/serial_motor_demo/ ~/dev_ws/src/
-(RPi): $ colcon build --symlink-install
 (RPi): $ cd ~/dev_ws/
+(RPi): $ colcon build --symlink-install
 (RPi): $ source install/setup.bash
 ```
 
