@@ -168,6 +168,7 @@ Highlights of the usage:
 * To compile: command **Arduino: Verify**. Monitor progress on the OUTPUT / Arduino window. Wait for it to finish before uploading.
 * To flash: command **Arduino: Upload**. Wait for compile to complete before uploading. Does not work if `miniterm` is running.
 * To monitor serial: use `miniterm` in a new Terminal
+* To add libraries: command **Arduino: Library Manager**
 
 ## Chassis (7/1/23)
 
